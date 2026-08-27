@@ -756,7 +756,7 @@
             }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 700px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
@@ -4426,11 +4426,25 @@
             }
         });
 
-        // Load rates from Rate Manager on page load
-        loadRatesFromManager();
-        updateChassisFromLocation();
-        setupToLocationAutocomplete();
-        updateFormForMode(); // Initialize form for current mode
+        // Load rates from Firebase (shared store), then initialize
+        async function initPage() {
+            try {
+                const res = await fetch('https://rate-manager-dsl-default-rtdb.firebaseio.com/rates.json');
+                if (res.ok) {
+                    const firebaseData = await res.json();
+                    if (firebaseData) {
+                        localStorage.setItem('dsl_rates', JSON.stringify(firebaseData));
+                    }
+                }
+            } catch (e) {
+                console.warn('Firebase unavailable, using cached rates:', e);
+            }
+            loadRatesFromManager();
+            updateChassisFromLocation();
+            setupToLocationAutocomplete();
+            updateFormForMode();
+        }
+        initPage();
     </script>
 </body>
 </html>
