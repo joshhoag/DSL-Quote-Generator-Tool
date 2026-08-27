@@ -1,4 +1,4 @@
-[DSL_Quote_Generator_20.html](https://github.com/user-attachments/files/31524666/DSL_Quote_Generator_20.html)
+[DSL_Quote_Generator_20_4.html](https://github.com/user-attachments/files/31524817/DSL_Quote_Generator_20_4.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
         
@@ -32,7 +32,7 @@
         
         .main-content {
             display: grid;
-            grid-template-columns: 380px 1fr;
+            grid-template-columns: 430px 1fr;
             gap: 40px;
             align-items: start;
         }
