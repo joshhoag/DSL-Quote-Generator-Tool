@@ -1,3 +1,4 @@
+[DSL_Quote_Generator_20_2.html](https://github.com/user-attachments/files/31847252/DSL_Quote_Generator_20_2.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
