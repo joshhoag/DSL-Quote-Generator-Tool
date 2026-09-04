@@ -1161,8 +1161,10 @@
 
         let modalRateInfo = null;
 
-        function switchMode(mode) {
+        async function switchMode(mode) {
             currentMode = mode;
+            // Always refresh rates from Firebase when switching modes
+            await loadRatesFromManager();
             
             // Update button styles
             const importBtn = document.getElementById('importBtn');
@@ -1360,16 +1362,24 @@
                 toLocation.style.backgroundColor = 'white';
                 toLocation.style.cursor = 'auto';
                 
-                // Populate toLocation with local cities
-                if (rateData.local && rateData.local.rates) {
-                    toLocation.innerHTML = rateData.local.rates.map(rate =>
-                        `<option value="${rate.destination}">${rate.destination}</option>`
-                    ).join('');
-                    toLocation.onchange = function() {
-                        updateLocalRate();
-                        generateQuote();
-                    };
-                }
+                // Set up toLocation as autocomplete for local destinations
+                toLocation.placeholder = 'Type or select city...';
+                toLocation.onchange = function() {
+                    updateLocalRate();
+                    generateQuote();
+                };
+                // Show autocomplete list immediately on focus
+                toLocation.addEventListener('focus', function() {
+                    if (currentMode === 'local') {
+                        const list = document.getElementById('toLocationAutocompleteList');
+                        if (rateData.local && rateData.local.rates) {
+                            list.innerHTML = rateData.local.rates.map(rate =>
+                                `<div class="autocomplete-item" onclick="selectToLocation('${rate.destination.replace(/'/g, "\\'")}')">${rate.destination}</div>`
+                            ).join('');
+                            list.style.display = 'block';
+                        }
+                    }
+                }, { once: true });
                 
                 // Show liveUnload in local mode
                 if (liveUnloadContainer) liveUnloadContainer.style.display = 'block';
@@ -1693,6 +1703,22 @@
                     return;
                 }
 
+                // Show autocomplete in local mode - all destinations or filtered
+                if (currentMode === 'local') {
+                    const localDests = (rateData.local && rateData.local.rates)
+                        ? rateData.local.rates.map(r => r.destination)
+                        : [];
+                    const filtered = value.length === 0
+                        ? localDests
+                        : localDests.filter(d => d.toLowerCase().includes(value));
+                    if (filtered.length === 0) { list.style.display = 'none'; return; }
+                    list.innerHTML = filtered.map(d =>
+                        `<div class="autocomplete-item" onclick="selectToLocation('${d.replace(/'/g, "\\'")}')">${d}</div>`
+                    ).join('');
+                    list.style.display = 'block';
+                    return;
+                }
+
                 // Show autocomplete in import and rail modes
                 if (currentMode !== 'import' && currentMode !== 'rail') {
                     list.style.display = 'none';
@@ -1734,6 +1760,8 @@
             document.getElementById('toLocationAutocompleteList').style.display = 'none';
             if (currentMode === 'railRampExport') {
                 updateRailRampExportRate();
+            } else if (currentMode === 'local') {
+                updateLocalRate();
             } else {
                 applyImportChassisForDestination();
             }
