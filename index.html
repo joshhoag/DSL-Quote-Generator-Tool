@@ -756,7 +756,7 @@
             }
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
@@ -775,12 +775,12 @@
                     <div style="display: flex; gap: 10px; margin-bottom: 10px;">
                         <button class="toggle-btn active" id="importBtn" onclick="switchMode('import')" style="flex: 1; padding: 12px;">IMPORT</button>
                         <button class="toggle-btn" id="railBtn" onclick="switchMode('rail')" style="flex: 1; padding: 12px;">RAIL IMPORT</button>
-                        <button class="toggle-btn" id="localBtn" onclick="switchMode('local')" style="flex: 1; padding: 12px;">LOCAL</button>
+                        <button class="toggle-btn" id="localBtn" onclick="switchMode('local')" style="flex: 1; padding: 12px;">LOCAL IMPORT</button>
                     </div>
                     <div style="display: flex; gap: 10px; margin-bottom: 10px;">
                         <button class="toggle-btn" id="exportBtn" onclick="switchMode('export')" style="flex: 1; padding: 12px;">EXPORT</button>
                         <button class="toggle-btn" id="railExportBtn" onclick="switchMode('railExport')" style="flex: 1; padding: 12px;">RAIL EXPORT</button>
-                        <button class="toggle-btn" id="railRampExportBtn" onclick="switchMode('railRampExport')" style="flex: 1; padding: 12px;">RAIL LOCAL EXPORT</button>
+                        <button class="toggle-btn" id="railRampExportBtn" onclick="switchMode('railRampExport')" style="flex: 1; padding: 12px;">LOCAL EXPORT</button>
                     </div>
                 </div>
                 
@@ -3346,13 +3346,13 @@
                 <div class="divider">&nbsp;</div>
 
                 <div class="quote-heading-container">
-                    <p class="quote-heading-title">RAIL RAMP EXPORT SHIPMENT</p>
+                    <p class="quote-heading-title">Local Move</p>
                     <p class="quote-heading-customer">${customerName}</p>
                 </div>
 
                 <div class="route-info">
                     <div class="route-from-to">${fromCity.toUpperCase()} &rarr; ${toLocation.toUpperCase()}</div>
-                    <div class="route-type">Export via Rail &mdash; Ramp Delivery</div>
+                    <div class="route-type">Local Drayage Service</div>
                 </div>
 
                 <table class="quote-table">
@@ -3585,7 +3585,7 @@
                 <div class="divider">&nbsp;</div>
                 
                 <div class="quote-heading-container">
-                    <p class="quote-heading-title">LOCAL SHIPMENT</p>
+                    <p class="quote-heading-title">Local Move</p>
                     <p class="quote-heading-customer">${customerName}</p>
                 </div>
                 
@@ -3874,7 +3874,7 @@
                 
                 <div class="route-info">
                     <div class="route-from-to">${fromLocation.toUpperCase()} &rarr; ${toLocation.toUpperCase()}</div>
-                    <div class="route-type">${containerTypeLabel ? containerTypeLabel + ' ' : ''}Loaded Container</div>
+                    <div class="route-type">${isRail ? 'Import via Rail to U.P. Rail Ramp' : (containerTypeLabel ? containerTypeLabel + ' ' : '') + 'Loaded Container'}</div>
                 </div>
 
                 <table class="quote-table">
@@ -4263,10 +4263,10 @@
                     <select id="laneMode-${id}" onchange="onLaneModeChange(${id})">
                         <option value="import"${mode === 'import' ? ' selected' : ''}>Import</option>
                         <option value="rail"${mode === 'rail' ? ' selected' : ''}>Rail Import</option>
-                        <option value="local"${mode === 'local' ? ' selected' : ''}>Local</option>
+                        <option value="local"${mode === 'local' ? ' selected' : ''}>Local Import</option>
                         <option value="export"${mode === 'export' ? ' selected' : ''}>Export</option>
                         <option value="railExport"${mode === 'railExport' ? ' selected' : ''}>Rail Export</option>
-                        <option value="railRampExport"${mode === 'railRampExport' ? ' selected' : ''}>Rail Local Export</option>
+                        <option value="railRampExport"${mode === 'railRampExport' ? ' selected' : ''}>Local Export</option>
                     </select>
                 </div>
                 <button type="button" class="btn-load-rate" onclick="openRateModal(${id})">\ud83d\udcca Load Rate from Manager</button>
@@ -4426,25 +4426,11 @@
             }
         });
 
-        // Load rates from Firebase (shared store), then initialize
-        async function initPage() {
-            try {
-                const res = await fetch('https://rate-manager-dsl-default-rtdb.firebaseio.com/rates.json');
-                if (res.ok) {
-                    const firebaseData = await res.json();
-                    if (firebaseData) {
-                        localStorage.setItem('dsl_rates', JSON.stringify(firebaseData));
-                    }
-                }
-            } catch (e) {
-                console.warn('Firebase unavailable, using cached rates:', e);
-            }
-            loadRatesFromManager();
-            updateChassisFromLocation();
-            setupToLocationAutocomplete();
-            updateFormForMode();
-        }
-        initPage();
+        // Load rates from Rate Manager on page load
+        loadRatesFromManager();
+        updateChassisFromLocation();
+        setupToLocationAutocomplete();
+        updateFormForMode(); // Initialize form for current mode
     </script>
 </body>
 </html>
