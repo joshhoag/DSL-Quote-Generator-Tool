@@ -3478,7 +3478,7 @@
                 </div>
 
                 ${showNF ? `<p class="note">NOTE: Rates subject to fuel surcharge adjustment.</p>
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 would apply in place of the flat chassis fee.</p>
+                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $100.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:export@dsllog.com">export@dsllog.com</a></p>
@@ -4214,7 +4214,7 @@
                 if (btn) { btn.classList.remove('active'); btn.textContent = 'OFF'; }
             });
             const triaxleInp = document.getElementById('laneTriaxle-' + id);
-            if (triaxleInp) triaxleInp.placeholder = (mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport' || mode === 'railRampExport') ? '$150' : '$100';
+            if (triaxleInp) triaxleInp.placeholder = (mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport') ? '$150' : '$100';
             rebuildLaneLocation(id, mode);
             generateQuote();
         }
