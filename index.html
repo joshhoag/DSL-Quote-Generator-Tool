@@ -756,7 +756,7 @@
             }
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
@@ -1161,10 +1161,8 @@
 
         let modalRateInfo = null;
 
-        async function switchMode(mode) {
+        function switchMode(mode) {
             currentMode = mode;
-            // Always refresh rates from Firebase when switching modes
-            await loadRatesFromManager();
             
             // Update button styles
             const importBtn = document.getElementById('importBtn');
@@ -1362,24 +1360,16 @@
                 toLocation.style.backgroundColor = 'white';
                 toLocation.style.cursor = 'auto';
                 
-                // Set up toLocation as autocomplete for local destinations
-                toLocation.placeholder = 'Type or select city...';
-                toLocation.onchange = function() {
-                    updateLocalRate();
-                    generateQuote();
-                };
-                // Show autocomplete list immediately on focus
-                toLocation.addEventListener('focus', function() {
-                    if (currentMode === 'local') {
-                        const list = document.getElementById('toLocationAutocompleteList');
-                        if (rateData.local && rateData.local.rates) {
-                            list.innerHTML = rateData.local.rates.map(rate =>
-                                `<div class="autocomplete-item" onclick="selectToLocation('${rate.destination.replace(/'/g, "\\'")}')">${rate.destination}</div>`
-                            ).join('');
-                            list.style.display = 'block';
-                        }
-                    }
-                }, { once: true });
+                // Populate toLocation with local cities
+                if (rateData.local && rateData.local.rates) {
+                    toLocation.innerHTML = rateData.local.rates.map(rate =>
+                        `<option value="${rate.destination}">${rate.destination}</option>`
+                    ).join('');
+                    toLocation.onchange = function() {
+                        updateLocalRate();
+                        generateQuote();
+                    };
+                }
                 
                 // Show liveUnload in local mode
                 if (liveUnloadContainer) liveUnloadContainer.style.display = 'block';
@@ -1586,25 +1576,16 @@
         }
 
         // Load rates from Rate Manager
-        async function loadRatesFromManager() {
+        function loadRatesFromManager() {
             try {
-                // Always fetch fresh rates from Firebase first
-                try {
-                    const res = await fetch('https://rate-manager-dsl-default-rtdb.firebaseio.com/rates.json');
-                    if (res.ok) {
-                        const firebaseData = await res.json();
-                        if (firebaseData) {
-                            localStorage.setItem('dsl_rates', JSON.stringify(firebaseData));
-                            rateData = firebaseData;
-                        }
-                    }
-                } catch (e) {
-                    console.warn('Firebase unavailable, falling back to localStorage:', e);
-                    const stored = localStorage.getItem('dsl_rates');
-                    rateData = stored ? JSON.parse(stored) : {};
+                const stored = localStorage.getItem('dsl_rates');
+                
+                // Load existing data from localStorage
+                if (stored) {
+                    rateData = JSON.parse(stored);
+                } else {
+                    rateData = {};
                 }
-
-                if (!rateData) rateData = {};
                 
                 // Populate EXPORT_DESTINATIONS from Rate Manager
                 if (rateData.export && rateData.export.rates && rateData.export.rates.length > 0) {
@@ -1703,22 +1684,6 @@
                     return;
                 }
 
-                // Show autocomplete in local mode - all destinations or filtered
-                if (currentMode === 'local') {
-                    const localDests = (rateData.local && rateData.local.rates)
-                        ? rateData.local.rates.map(r => r.destination)
-                        : [];
-                    const filtered = value.length === 0
-                        ? localDests
-                        : localDests.filter(d => d.toLowerCase().includes(value));
-                    if (filtered.length === 0) { list.style.display = 'none'; return; }
-                    list.innerHTML = filtered.map(d =>
-                        `<div class="autocomplete-item" onclick="selectToLocation('${d.replace(/'/g, "\\'")}')">${d}</div>`
-                    ).join('');
-                    list.style.display = 'block';
-                    return;
-                }
-
                 // Show autocomplete in import and rail modes
                 if (currentMode !== 'import' && currentMode !== 'rail') {
                     list.style.display = 'none';
@@ -1760,8 +1725,6 @@
             document.getElementById('toLocationAutocompleteList').style.display = 'none';
             if (currentMode === 'railRampExport') {
                 updateRailRampExportRate();
-            } else if (currentMode === 'local') {
-                updateLocalRate();
             } else {
                 applyImportChassisForDestination();
             }
@@ -1900,7 +1863,7 @@
                 }
             } else {
                 // Turn ON - set based on mode and location
-                if (currentMode === 'local') {
+                if (currentMode === 'local' || currentMode === 'railRampExport') {
                     triaxleInput.value = '100.00';
                 } else if (currentMode === 'export') {
                     triaxleInput.value = '150.00';
@@ -2027,12 +1990,12 @@
             generateQuote();
         }
 
-        async function openRateModal(laneId) {
+        function openRateModal(laneId) {
             // Track which lane (if any) this rate load should populate
             rateModalTarget = (laneId === undefined || laneId === null) ? null : laneId;
 
-            // Load fresh rates from Firebase first
-            await loadRatesFromManager();
+            // Load rates from Rate Manager first
+            loadRatesFromManager();
             
             modalRateInfo = null;
             document.getElementById('modalDestination').value = '';
@@ -3478,7 +3441,7 @@
                 </div>
 
                 ${showNF ? `<p class="note">NOTE: Rates subject to fuel surcharge adjustment.</p>
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 would apply in place of the flat chassis fee.</p>
+                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $100.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:export@dsllog.com">export@dsllog.com</a></p>
@@ -4156,8 +4119,8 @@
         // Swap a lane's Location control to match its mode: a pickup dropdown that auto-fills
         // the rate for Export / Rail Export / Rail Ramp Export, or a free-text input otherwise.
         // Rail Ramp Export also gets a second dropdown for the destination ramp.
-        async function rebuildLaneLocation(id, mode) {
-            await loadRatesFromManager(); // ensure the pickup lists are current
+        function rebuildLaneLocation(id, mode) {
+            loadRatesFromManager(); // ensure the pickup lists are current
             const el = document.getElementById('laneLocation-' + id);
             if (!el) return;
             const group = el.parentElement;
@@ -4214,7 +4177,7 @@
                 if (btn) { btn.classList.remove('active'); btn.textContent = 'OFF'; }
             });
             const triaxleInp = document.getElementById('laneTriaxle-' + id);
-            if (triaxleInp) triaxleInp.placeholder = (mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport' || mode === 'railRampExport') ? '$150' : '$100';
+            if (triaxleInp) triaxleInp.placeholder = (mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport') ? '$150' : '$100';
             rebuildLaneLocation(id, mode);
             generateQuote();
         }
@@ -4342,7 +4305,7 @@
                 <div class="form-group-with-toggle">
                     <div>
                         <label>Triaxle ($)</label>
-                        <input type="number" id="laneTriaxle-${id}" placeholder="${(mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport' || mode === 'railRampExport') ? '$150' : '$100'}" step="0.01">
+                        <input type="number" id="laneTriaxle-${id}" placeholder="${(mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport') ? '$150' : '$100'}" step="0.01">
                     </div>
                     <button type="button" class="toggle-btn" id="laneTriaxleBtn-${id}" onclick="toggleLaneTriaxle(${id})">OFF</button>
                 </div>
@@ -4464,13 +4427,10 @@
         });
 
         // Load rates from Rate Manager on page load
-        async function initPage() {
-            await loadRatesFromManager();
-            updateChassisFromLocation();
-            setupToLocationAutocomplete();
-            updateFormForMode();
-        }
-        initPage();
+        loadRatesFromManager();
+        updateChassisFromLocation();
+        setupToLocationAutocomplete();
+        updateFormForMode(); // Initialize form for current mode
     </script>
 </body>
 </html>
