@@ -4024,6 +4024,105 @@
             return buildBlockForMode(currentMode, customerName, overrides, showNotesFooter);
         }
 
+        // ===== Shared Quote Log Integration (Phase 1) =====
+        // Writes a structured quote record to the same Firebase project Rate Manager
+        // already uses, so the Shared Quote Log tool can read it without any manual re-entry.
+
+        function mapModeToQuoteType(mode) {
+            if (mode === 'export') return 'Export';
+            if (mode === 'railExport') return 'Rail Export';
+            if (mode === 'railRampExport') return 'Rail Export';
+            if (mode === 'local') return 'STD Local';
+            if (mode === 'rail') return 'Rail Import';
+            return 'Import';
+        }
+
+        // Mirrors the from/to resolution logic already used inside each buildXQuote()
+        // function, so the logged lane matches exactly what the customer was quoted.
+        function getCurrentFromTo(mode) {
+            const fromEl = document.getElementById('fromLocation');
+            const toEl = document.getElementById('toLocation');
+            const fromVal = fromEl ? fromEl.value : '';
+            const toVal = toEl ? toEl.value : '';
+            const customLocationEl = document.getElementById('customLocation');
+            const customLocation = customLocationEl ? customLocationEl.value : '';
+
+            let from, to;
+
+            if (mode === 'export') {
+                from = fromVal;
+                to = 'Port of Los Angeles/Long Beach';
+            } else if (mode === 'railExport') {
+                from = fromVal;
+                to = 'Port of Los Angeles/Long Beach RAIL';
+            } else if (mode === 'railRampExport') {
+                from = fromVal;
+                to = toVal;
+            } else if (mode === 'local') {
+                from = (fromVal === 'phoenix_rr') ? 'PHOENIX RR' : 'PHOENIX CY';
+                to = toVal;
+            } else if (mode === 'rail') {
+                from = (fromVal === 'other') ? (customLocation || 'Custom Location') : 'Port of Los Angeles/Long Beach RAIL';
+                to = toVal;
+            } else {
+                // import (default)
+                if (fromVal === 'los_angeles') {
+                    from = 'Port of Los Angeles/Long Beach';
+                } else if (fromVal === 'other') {
+                    from = customLocation || 'Custom Location';
+                } else {
+                    from = 'Port of Los Angeles/Long Beach';
+                }
+                to = toVal;
+            }
+            return { from: from || '', to: to || '' };
+        }
+
+        function logQuoteToSharedLog() {
+            // Defensive: this must never break the actual copy-to-clipboard experience,
+            // so any failure here is caught and logged to console only.
+            try {
+                const customerName = document.getElementById('customerName').value || 'Customer';
+                const fromTo = getCurrentFromTo(currentMode);
+                const transportRate = parseFloat(document.getElementById('transportRate').value) || 0;
+                const fuelSurchargePercent = parseFloat(document.getElementById('fuelSurcharge').value) || 0;
+                const chassisRate = parseFloat(document.getElementById('chassisRate').value) || 0;
+                const estimatedTotal = (transportRate + (transportRate * fuelSurchargePercent / 100) + chassisRate).toFixed(2);
+
+                const now = new Date();
+                const quotedDate = now.toISOString().slice(0, 10);
+                const validUntilDate = new Date(now);
+                validUntilDate.setDate(validUntilDate.getDate() + 30);
+                const validUntil = validUntilDate.toISOString().slice(0, 10);
+
+                const quoteRecord = {
+                    customer: customerName,
+                    quoteType: mapModeToQuoteType(currentMode),
+                    sourceMode: currentMode,
+                    from: fromTo.from,
+                    to: fromTo.to,
+                    transportRate: transportRate,
+                    fuelSurchargePercent: fuelSurchargePercent,
+                    chassisRate: chassisRate,
+                    rate: '$' + estimatedTotal + ' (est.)',
+                    quotedBy: '',
+                    quotedDate: quotedDate,
+                    validUntil: validUntil,
+                    notes: '',
+                    orderPlaced: false,
+                    loggedAt: now.toISOString()
+                };
+
+                fetch('https://rate-manager-dsl-default-rtdb.firebaseio.com/quotes.json', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(quoteRecord)
+                }).catch(err => console.error('Shared Quote Log write failed:', err));
+            } catch (err) {
+                console.error('Shared Quote Log logging error:', err);
+            }
+        }
+
         function generateQuote() {
             const customerName = document.getElementById('customerName').value || 'Customer';
 
@@ -4399,6 +4498,7 @@
         }
 
         function copyQuote() {
+            logQuoteToSharedLog(); // Phase 1: Shared Quote Log integration
             const el = document.getElementById('quoteContent');
 
             // Primary: reproduce a manual "select the quote and copy" so pasting into
