@@ -1067,7 +1067,6 @@
         let tankerActive = false;
         let triaxleActive = false;
         let customQuoteMode = false;
-        let quoteIsCustomQuote = false; // persists past closeRateModal() resetting customQuoteMode, so build*Quote() can still see it
         let lanes = [];            // ids of additional lanes, in display order
         let laneCounter = 0;       // ever-increasing id source
         let rateModalTarget = null; // null = main form; otherwise a lane id
@@ -1164,7 +1163,6 @@
 
         async function switchMode(mode) {
             currentMode = mode;
-            quoteIsCustomQuote = false;
             // Always refresh rates from Firebase when switching modes
             await loadRatesFromManager();
             
@@ -2993,8 +2991,6 @@
                 setLaneFromRateFields(target, vals);
             } else {
                 applyModalRateCore();
-                // closeRateModal() below clears customQuoteMode, so snapshot it here for generateQuote()
-                quoteIsCustomQuote = customQuoteMode;
             }
 
             closeRateModal();
@@ -3175,7 +3171,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${fromCity}: Free` : '',
-                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
+                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
                             `No chassis split or pre-pull charges`,
                             `Live Loading in ${fromCity} (2 free hours) – $97.50/hr`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3326,7 +3322,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${fromCity}: Free` : '',
-                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
+                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
                             `No chassis split or pre-pull charges`,
                             `Live Loading in ${fromCity} (2 free hours) – $97.50/hr`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3671,7 +3667,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${toCity}: Free` : '',
-                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
+                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
                             includeNoChassis ? `No additional chassis split charges` : '',
                             `Live Unloading in ${toCity}: Includes 2 free hours; $97.50 each hour after`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3783,7 +3779,7 @@
                 </div>
                 <p class="note">NOTE: Our chassis fee applies regardless of Steamship Line agreements.</p>
                 ${hasDropPickFree ? `<p class="note">NOTE: Drop/pick in ${toLocation}: Free.</p>` : ''}
-                ${(laneFreeStorage && !quoteIsCustomQuote) ? `<p class="note">NOTE: ${storageDays} days free storage in Phoenix CY.</p>` : ''}
+                ${laneFreeStorage ? `<p class="note">NOTE: ${storageDays} days free storage in Phoenix CY.</p>` : ''}
                 <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $250.00 would apply in place of the flat chassis fee.</p>
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:imports@dsllog.com">imports@dsllog.com</a></p>
@@ -3872,7 +3868,7 @@
             let servicesItems = [];
             if (hasDropPickFree) servicesItems.push(`Drop/pick in ${toLocation}: Free`);
             
-            if (includeStorage && laneFreeStorage && !quoteIsCustomQuote) {
+            if (includeStorage && laneFreeStorage) {
                 servicesItems.push(`${storageDays} days free storage in Phoenix CY`);
             }
             if (includeNoChassis) {
@@ -4086,12 +4082,59 @@
             // Defensive: this must never break the actual copy-to-clipboard experience,
             // so any failure here is caught and logged to console only.
             try {
-                const customerName = document.getElementById('customerName').value || 'Customer';
+                const domVal = (id) => { const el = document.getElementById(id); return el ? el.value : ''; };
+                const domChecked = (id) => { const el = document.getElementById(id); return el ? !!el.checked : false; };
+                const domActive = (id) => { const el = document.getElementById(id); return el ? el.classList.contains('active') : false; };
+                const num = (v) => { const n = parseFloat(v); return isNaN(n) ? 0 : n; };
+
+                const customerName = domVal('customerName') || 'Customer';
                 const fromTo = getCurrentFromTo(currentMode);
-                const transportRate = parseFloat(document.getElementById('transportRate').value) || 0;
-                const fuelSurchargePercent = parseFloat(document.getElementById('fuelSurcharge').value) || 0;
-                const chassisRate = parseFloat(document.getElementById('chassisRate').value) || 0;
-                const estimatedTotal = (transportRate + (transportRate * fuelSurchargePercent / 100) + chassisRate).toFixed(2);
+
+                // Core rate fields
+                const transportRate = num(domVal('transportRate'));
+                const fuelSurchargePercent = num(domVal('fuelSurcharge'));
+                const chassisRate = num(domVal('chassisRate'));
+                const liveUnloadRate = num(domVal('liveUnloadRate'));
+
+                // Accessorials / surcharges — shared fields across all 8 quote modes
+                const tankerSurcharge = num(domVal('tankerSurcharge'));
+                const hazmatSurcharge = num(domVal('hazmatSurcharge'));
+                const triaxleSurcharge = num(domVal('triaxleSurcharge'));
+                const splitChassisFee = num(domVal('splitChassisFee'));
+                const residentialDelivery = num(domVal('residentialDelivery'));
+                const reeferSurcharge = num(domVal('reeferSurcharge'));
+                const gensetSurcharge = num(domVal('gensetSurcharge'));
+                const scaleTicketFee = num(domVal('scaleTicketFee'));
+
+                // Container / steamship / service details
+                const containerType = domVal('importContainerType');
+                const steamshipLine = domVal('importSteamshipLine');
+                const dropLocation = domVal('dropLocation');
+                const includeStorage = domChecked('includeStorage');
+                const storageDays = domVal('storageDays');
+                const includeNoChassis = domChecked('includeNoChassis');
+                const maxCargoWeight = domVal('maxCargoWeight');
+                const maxCargoToggle = domActive('maxCargoToggleBtn');
+
+                // Custom fields the rep added manually for this quote
+                const customFieldsCopy = (typeof customFields !== 'undefined' && Array.isArray(customFields))
+                    ? customFields.map(f => ({ name: f.name, value: f.value }))
+                    : [];
+
+                // Comprehensive total — mirrors the formula each buildXQuote() uses;
+                // fields not applicable to a given mode are simply 0 and don't affect the sum.
+                const fullTotal = (
+                    transportRate +
+                    (transportRate * fuelSurchargePercent / 100) +
+                    chassisRate + tankerSurcharge + hazmatSurcharge + triaxleSurcharge +
+                    splitChassisFee + residentialDelivery + reeferSurcharge + gensetSurcharge + scaleTicketFee
+                ).toFixed(2);
+
+                // Verbatim rendered quote — exactly what the customer will see in the email.
+                // This is the most reliable single source of truth for later comparison against
+                // whatever Imports/Exports/EDI actually enters as the order.
+                const quoteContentEl = document.getElementById('quoteContent');
+                const fullQuoteText = quoteContentEl ? quoteContentEl.innerText : '';
 
                 const now = new Date();
                 const quotedDate = now.toISOString().slice(0, 10);
@@ -4105,13 +4148,18 @@
                     sourceMode: currentMode,
                     from: fromTo.from,
                     to: fromTo.to,
-                    transportRate: transportRate,
-                    fuelSurchargePercent: fuelSurchargePercent,
-                    chassisRate: chassisRate,
-                    rate: '$' + estimatedTotal + ' (est.)',
+                    rate: '$' + fullTotal,
+                    transportRate, fuelSurchargePercent, chassisRate, liveUnloadRate,
+                    tankerSurcharge, hazmatSurcharge, triaxleSurcharge, splitChassisFee,
+                    residentialDelivery, reeferSurcharge, gensetSurcharge, scaleTicketFee,
+                    containerType, steamshipLine, dropLocation,
+                    includeStorage, storageDays, includeNoChassis,
+                    maxCargoWeight, maxCargoToggle,
+                    customFields: customFieldsCopy,
+                    fullQuoteText,
                     quotedBy: '',
-                    quotedDate: quotedDate,
-                    validUntil: validUntil,
+                    quotedDate,
+                    validUntil,
                     notes: '',
                     orderPlaced: false,
                     loggedAt: now.toISOString()
