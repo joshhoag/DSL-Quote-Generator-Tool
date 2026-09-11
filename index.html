@@ -1067,6 +1067,7 @@
         let tankerActive = false;
         let triaxleActive = false;
         let customQuoteMode = false;
+        let quoteIsCustomQuote = false; // persists past closeRateModal() resetting customQuoteMode, so build*Quote() can still see it
         let lanes = [];            // ids of additional lanes, in display order
         let laneCounter = 0;       // ever-increasing id source
         let rateModalTarget = null; // null = main form; otherwise a lane id
@@ -1163,6 +1164,7 @@
 
         async function switchMode(mode) {
             currentMode = mode;
+            quoteIsCustomQuote = false;
             // Always refresh rates from Firebase when switching modes
             await loadRatesFromManager();
             
@@ -2991,6 +2993,8 @@
                 setLaneFromRateFields(target, vals);
             } else {
                 applyModalRateCore();
+                // closeRateModal() below clears customQuoteMode, so snapshot it here for generateQuote()
+                quoteIsCustomQuote = customQuoteMode;
             }
 
             closeRateModal();
@@ -3171,7 +3175,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${fromCity}: Free` : '',
-                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
+                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
                             `No chassis split or pre-pull charges`,
                             `Live Loading in ${fromCity} (2 free hours) – $97.50/hr`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3322,7 +3326,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${fromCity}: Free` : '',
-                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
+                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
                             `No chassis split or pre-pull charges`,
                             `Live Loading in ${fromCity} (2 free hours) – $97.50/hr`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3667,7 +3671,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${toCity}: Free` : '',
-                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
+                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
                             includeNoChassis ? `No additional chassis split charges` : '',
                             `Live Unloading in ${toCity}: Includes 2 free hours; $97.50 each hour after`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3779,7 +3783,7 @@
                 </div>
                 <p class="note">NOTE: Our chassis fee applies regardless of Steamship Line agreements.</p>
                 ${hasDropPickFree ? `<p class="note">NOTE: Drop/pick in ${toLocation}: Free.</p>` : ''}
-                ${laneFreeStorage ? `<p class="note">NOTE: ${storageDays} days free storage in Phoenix CY.</p>` : ''}
+                ${(laneFreeStorage && !quoteIsCustomQuote) ? `<p class="note">NOTE: ${storageDays} days free storage in Phoenix CY.</p>` : ''}
                 <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $250.00 would apply in place of the flat chassis fee.</p>
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:imports@dsllog.com">imports@dsllog.com</a></p>
@@ -3868,7 +3872,7 @@
             let servicesItems = [];
             if (hasDropPickFree) servicesItems.push(`Drop/pick in ${toLocation}: Free`);
             
-            if (includeStorage && laneFreeStorage) {
+            if (includeStorage && laneFreeStorage && !quoteIsCustomQuote) {
                 servicesItems.push(`${storageDays} days free storage in Phoenix CY`);
             }
             if (includeNoChassis) {
