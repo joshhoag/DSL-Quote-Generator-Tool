@@ -832,7 +832,7 @@
                     </div>
                     <div class="form-group">
                         <label>Fuel Surcharge (%)</label>
-                        <input type="number" id="fuelSurcharge" value="57" step="0.1">
+                        <input type="number" id="fuelSurcharge" value="62" step="0.1">
                     </div>
                     <div class="form-group-with-toggle">
                         <div>
@@ -1202,7 +1202,7 @@
             
             // Reset fields
             document.getElementById('toLocation').value = '';
-            document.getElementById('fuelSurcharge').value = '57';
+            document.getElementById('fuelSurcharge').value = '62';
             document.getElementById('importSteamshipLine').value = '';
             document.getElementById('importContainerType').value = '';
             
@@ -1386,8 +1386,8 @@
                 // Show liveUnload in local mode
                 if (liveUnloadContainer) liveUnloadContainer.style.display = 'block';
                 
-                // Set fuel surcharge to 57% for LOCAL mode
-                document.getElementById('fuelSurcharge').value = '57';
+                // Set fuel surcharge to 62% for LOCAL mode
+                document.getElementById('fuelSurcharge').value = '62';
                 
                 // Set default chassis fee to $50 for LOCAL mode
                 document.getElementById('chassisRate').value = '50.00';
@@ -1655,15 +1655,15 @@
                     rateData.local = {
                         description: "Local Shipments (Phoenix CY to Local Destinations)",
                         rates: [
-                            { destination: "Phoenix, AZ", baseRate: 250.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 392.50 },
-                            { destination: "Chandler/Mesa/Tempe/Gilbert, AZ", baseRate: 295.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 463.15 },
-                            { destination: "Tucson, AZ", baseRate: 785.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 1232.45 },
-                            { destination: "Nogales, AZ", baseRate: 1160.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 1821.20 },
-                            { destination: "Albuquerque, NM / Belen, NM / El Paso, TX", baseRate: 2095.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 3289.15 },
-                            { destination: "Casa Grande, AZ", baseRate: 595.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 934.15 },
-                            { destination: "Maricopa, AZ", baseRate: 475.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 745.75 },
-                            { destination: "Eloy, AZ", baseRate: 595.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 934.15 },
-                            { destination: "Prescott, AZ", baseRate: 785.00, fuelSurcharge: 57, hazmat: 0.00, noReefer: 0.00, totalRate: 1232.45 }
+                            { destination: "Phoenix, AZ", baseRate: 250.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 405.00 },
+                            { destination: "Chandler/Mesa/Tempe/Gilbert, AZ", baseRate: 295.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 477.90 },
+                            { destination: "Tucson, AZ", baseRate: 785.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 1271.70 },
+                            { destination: "Nogales, AZ", baseRate: 1160.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 1879.20 },
+                            { destination: "Albuquerque, NM / Belen, NM / El Paso, TX", baseRate: 2095.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 3393.90 },
+                            { destination: "Casa Grande, AZ", baseRate: 595.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 963.90 },
+                            { destination: "Maricopa, AZ", baseRate: 475.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 769.50 },
+                            { destination: "Eloy, AZ", baseRate: 595.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 963.90 },
+                            { destination: "Prescott, AZ", baseRate: 785.00, fuelSurcharge: 62, hazmat: 0.00, noReefer: 0.00, totalRate: 1271.70 }
                         ]
                     };
                     localStorage.setItem('dsl_rates', JSON.stringify(rateData));
@@ -2825,7 +2825,7 @@
                 }
                 const transportRate = parseFloat(modalRateInfo.baseRate) + customAmount;
                 document.getElementById('transportRate').value = transportRate.toFixed(2);
-                const fuelSurcharge = customQuoteMode ? 57 : parseFloat(modalRateInfo.fuelSurcharge);
+                const fuelSurcharge = customQuoteMode ? 62 : parseFloat(modalRateInfo.fuelSurcharge);
                 console.log('   Setting fuel surcharge to:', fuelSurcharge);
                 document.getElementById('fuelSurcharge').value = fuelSurcharge;
             } else if (modalMode === 'railRampExport') {
@@ -2856,7 +2856,7 @@
                 document.getElementById('toLocation').value = document.getElementById('modalRailRamp').value;
                 const transportRate = parseFloat(modalRateInfo.baseRate) + customAmount;
                 document.getElementById('transportRate').value = transportRate.toFixed(2);
-                document.getElementById('fuelSurcharge').value = customQuoteMode ? 57 : parseFloat(modalRateInfo.fuelSurcharge);
+                document.getElementById('fuelSurcharge').value = customQuoteMode ? 62 : parseFloat(modalRateInfo.fuelSurcharge);
             } else if (modalMode === 'local') {
                 // Local mode - update TO location and rates
                 const customLocField = document.getElementById('customQuoteDelivery');
@@ -2870,8 +2870,8 @@
                 }
                 const transportRate = parseFloat(modalRateInfo.baseRate) + customAmount;
                 document.getElementById('transportRate').value = transportRate.toFixed(2);
-                // Use 57% for custom quote mode, otherwise use the loaded rate's FSC
-                const fuelSurcharge = customQuoteMode ? 57 : parseFloat(modalRateInfo.fuelSurcharge);
+                // Use 62% for custom quote mode, otherwise use the loaded rate's FSC
+                const fuelSurcharge = customQuoteMode ? 62 : parseFloat(modalRateInfo.fuelSurcharge);
                 document.getElementById('fuelSurcharge').value = fuelSurcharge;
                 document.getElementById('importContainerType').value = customQuoteMode ? '' : (modalRateInfo.containerType || '');
 
@@ -2903,8 +2903,8 @@
                 }
                 const transportRate = parseFloat(modalRateInfo.baseRate) + customAmount;
                 document.getElementById('transportRate').value = transportRate.toFixed(2);
-                // Use 57% for custom quote mode, otherwise use the loaded rate's FSC
-                const fuelSurcharge = customQuoteMode ? 57 : (parseFloat(modalRateInfo.fsc) * 100);
+                // Use 62% for custom quote mode, otherwise use the loaded rate's FSC
+                const fuelSurcharge = customQuoteMode ? 62 : (parseFloat(modalRateInfo.fsc) * 100);
                 document.getElementById('fuelSurcharge').value = fuelSurcharge.toFixed(1);
                 document.getElementById('importSteamshipLine').value = customQuoteMode ? '' : (modalRateInfo.steamshipLine || '');
                 document.getElementById('importContainerType').value = customQuoteMode ? '' : (modalRateInfo.containerType || '');
@@ -3498,8 +3498,8 @@
             const showNF = showNotesFooter !== false;
             const toCity = o ? (o.location || '') : document.getElementById('toLocation').value;
             const transportRate = (parseFloat(o ? o.transportRate : document.getElementById('transportRate').value) || 0).toFixed(2);
-            const fuelSurchargePercent = (parseFloat(o ? o.fuelSurcharge : document.getElementById('fuelSurcharge').value) || 0);  // 57
-            const fuelSurchargeDisplay = fuelSurchargePercent.toFixed(0);  // 57 for display
+            const fuelSurchargePercent = (parseFloat(o ? o.fuelSurcharge : document.getElementById('fuelSurcharge').value) || 0);  // 62
+            const fuelSurchargeDisplay = fuelSurchargePercent.toFixed(0);  // 62 for display
             const chassisRate = (parseFloat((o ? o.chassisRate : document.getElementById('chassisRate').value) || '0') || 0).toFixed(2);
             const tankerSurchargeValue = surchargeVal(o, 'tanker', 'tankerSurcharge');
             const hazmatSurchargeValue = surchargeVal(o, 'hazmat', 'hazmatSurcharge');
@@ -3518,7 +3518,7 @@
             
             // Calculate totals for local
             const transportRateNum = parseFloat(transportRate);
-            const fuelSurchargeNum = fuelSurchargePercent / 100;  // Convert 57 to 0.57 for calculation
+            const fuelSurchargeNum = fuelSurchargePercent / 100;  // Convert 62 to 0.62 for calculation
             const fuelSurchargeAmount = transportRateNum * fuelSurchargeNum;
             const chassisRateNum = parseFloat(chassisRate);
             const tankerNum = tankerSurchargeValue ? parseFloat(tankerSurchargeValue) : 0;
@@ -3696,7 +3696,7 @@
 
         function buildImportMenuQuote(customerName) {
             const toLocation = document.getElementById('toLocation').value || 'Delivery Location';
-            const fscRaw = parseFloat(document.getElementById('fuelSurcharge').value) || 57;
+            const fscRaw = parseFloat(document.getElementById('fuelSurcharge').value) || 62;
             const fscDisp = fscRaw.toFixed(0);
             const chassis = (parseFloat(document.getElementById('chassisRate').value) || 195).toFixed(2);
             const chassisNum = parseFloat(chassis);
@@ -4003,7 +4003,7 @@
                 </div>
                 
                 ${showNF ? `<p class="note">NOTE: Chassis fee applies regardless of Steamship Line agreements.</p>
-                ${showSteamshipNote ? `<p class="note">NOTE: If the Steamship Line is not one of our preferred carriers (APL, COSCO, CMA, Evergreen, Hamburg S&uuml;d, Hapag-Lloyd, Maersk, Matson, MSC, ONE, OOCL, Wan Hai), a $480 non-preferred carrier surcharge is added to the base transport rate before the Fuel Surcharge is calculated:<br>(Base Transport Rate + $480) &times; 1.57 = Total Transportation Cost<br>The 57% FSC applies to the combined amount, not the base rate alone.</p>
+                ${showSteamshipNote ? `<p class="note">NOTE: If the Steamship Line is not one of our preferred carriers (APL, COSCO, CMA, Evergreen, Hamburg S&uuml;d, Hapag-Lloyd, Maersk, Matson, MSC, ONE, OOCL, Wan Hai), a $480 non-preferred carrier surcharge is added to the base transport rate before the Fuel Surcharge is calculated:<br>(Base Transport Rate + $480) &times; 1.62 = Total Transportation Cost<br>The 62% FSC applies to the combined amount, not the base rate alone.</p>
                 ` : ''}<p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $250.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
@@ -4356,7 +4356,7 @@
             const label = document.getElementById('laneLocationLabel-' + id);
             if (label) label.textContent = laneLocationLabelFor(mode);
             document.getElementById('laneTransport-' + id).value = '0.00';
-            document.getElementById('laneFuel-' + id).value = '57';
+            document.getElementById('laneFuel-' + id).value = '62';
             document.getElementById('laneChassis-' + id).value = defaultLaneChassisFor(mode);
             const laneContainerTypeEl = document.getElementById('laneContainerType-' + id);
             if (laneContainerTypeEl) laneContainerTypeEl.value = '';
@@ -4474,7 +4474,7 @@
                 </div>
                 <div class="form-group">
                     <label>Fuel Surcharge (%)</label>
-                    <input type="number" id="laneFuel-${id}" value="57" step="0.1">
+                    <input type="number" id="laneFuel-${id}" value="62" step="0.1">
                 </div>
                 <div class="form-group">
                     <label>Chassis Fee ($)</label>
