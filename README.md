@@ -1,4 +1,4 @@
-[DSL_Quote_Generator_20_2.html](https://github.com/user-attachments/files/31847252/DSL_Quote_Generator_20_2.html)
+[Uploading DSL_Quote_Generator_64.html…]()
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -298,84 +298,99 @@
             font-family: Calibri, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
+            max-width: 560px;
         }
         
         .quote-header {
+            background-color: #FFD700;
             text-align: center;
-            margin-bottom: 24px;
+            padding: 12px 20px;
+            border: 1px solid #000;
+            border-radius: 0;
+            margin-bottom: 0;
         }
         
         .quote-title {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 800;
             color: #000;
-            margin-bottom: 4px;
-        }
-        
-        .divider {
-            border-bottom: 2px solid #FFD700;
-            margin: 24px 0;
-            font-size: 1px;
-            line-height: 1px;
-        }
-        
-        .quote-heading {
-            font-size: 19px;
-            color: #555;
-            margin: 0 0 24px 0;
-        }
-        
-        .quote-heading-container {
-            margin-bottom: 24px;
-        }
-
-        .quote-heading-title {
-            font-size: 19px;
-            color: #555;
-            margin: 0 0 20px 0;
-        }
-
-        .quote-heading-customer {
-            font-size: 16px;
-            color: #333;
-            font-weight: 600;
+            letter-spacing: 3px;
             margin: 0;
         }
         
-        .route-info {
-            margin-bottom: 24px;
+        .divider {
+            display: none;
         }
         
-        .route-from-to {
-            font-size: 17px;
-            font-weight: bold;
+        .quote-heading-container {
+            background-color: transparent;
+            padding: 12px 2px 0 2px;
+            border-radius: 0;
+            margin: 0 0 10px 0;
+        }
+
+        .quote-heading-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             color: #000;
-            margin-bottom: 8px;
+            margin: 0 0 2px 0;
         }
-        
-        .route-type {
+
+        .quote-heading-customer {
             font-size: 14px;
-            color: #666;
-            margin-bottom: 24px;
+            color: #000;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .quote-heading-date {
+            font-size: 12px;
+            color: #000;
+            margin: 3px 0 0 0;
         }
         
+        .route-info {
+            margin-bottom: 13px;
+        }
+
+        .route-from-to {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 4px;
+            margin-bottom: 0;
+        }
+
+        .route-type {
+            font-size: 13px;
+            color: #888;
+            margin: 6px 0 0 0;
+        }
+
         .quote-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 24px;
+            margin-bottom: 6px;
             font-size: 15px;
         }
         
         .quote-table thead {
-            background-color: #f5f5f5;
-            border-bottom: 2px solid #FFD700;
+            background-color: transparent;
+            border-bottom: 1px solid #000;
         }
         
         .quote-table th {
-            padding: 12px;
+            padding: 0 2px 6px;
             text-align: left;
-            font-weight: bold;
-            font-size: 16px;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #999;
         }
         
         .quote-table th:last-child {
@@ -383,13 +398,29 @@
         }
         
         .quote-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 7px 2px;
+            border-bottom: 1px solid #f0f0f0;
         }
         
         .quote-table td:last-child {
             text-align: right;
             font-weight: bold;
+        }
+        
+        .total-row td {
+            padding: 10px 2px;
+            background-color: transparent;
+            color: #000;
+            font-weight: 800;
+            font-size: 16px;
+            border-top: 3px solid #000;
+            border-bottom: 3px solid #000;
+        }
+
+        .total-row td:last-child {
+            color: #000;
+            font-size: 18px;
+            text-align: right;
         }
         
         .service-desc {
@@ -398,20 +429,36 @@
         }
         
         .services-section {
-            margin-bottom: 24px;
+            background-color: #faf8ef;
+            border: 1px solid #f0ead0;
+            border-radius: 5px;
+            padding: 12px 14px;
+            margin: 6px 0 10px 0;
         }
-        
+
         .services-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #9a7d00;
+            margin-bottom: 5px;
         }
-        
+
         .services-list {
-            margin-bottom: 24px;
-            font-size: 15px;
-            line-height: 1.6;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #444;
+        }
+
+        .lane-head {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #9a7d00;
+            margin: 18px 0 2px 0;
         }
 
         .menu-quote {
@@ -421,55 +468,53 @@
         }
         .menu-lead { margin: 0 0 16px; }
         .menu-cond { margin: 14px 0 3px; }
-        .menu-rate { margin: 0 0 4px; font-weight: 700; }
         .menu-section { margin: 20px 0 4px; }
         .menu-fee { margin: 0; }
         .menu-divider { border-top: 1px solid #ddd; margin: 16px 0; font-size: 1px; line-height: 1px; }
-        
-        .service-item {
-            margin: 6px 0;
-            font-size: 15px;
-        }
         
         .custom-section {
             margin-bottom: 24px;
         }
         
-        .custom-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 8px;
-        }
-        
-        .custom-item {
-            margin: 6px 0;
-            font-size: 15px;
-        }
-        
         .note {
-            font-size: 13px;
-            color: #888;
+            font-size: 12px;
+            color: #999;
             font-style: italic;
-            margin: 24px 0 0 0;
+            line-height: 1.7;
+            margin: 6px 0 0 0;
+        }
+
+        .validity-banner {
+            background-color: #FFD700;
+            border: 1px solid #000;
+            padding: 8px 14px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 12.5px;
+            font-weight: 400;
+            color: #000;
         }
         
         .footer {
-            border-top: 2px solid #FFD700;
-            margin-top: 24px;
-            padding-top: 12px;
+            background-color: transparent;
+            border-top: 1px solid #000;
+            border-radius: 0;
+            margin-top: 14px;
+            padding: 10px 0 2px 0;
             text-align: center;
         }
         
         .footer-text {
             font-size: 13px;
-            color: #888;
+            color: #000;
+            font-weight: 700;
+            letter-spacing: 1px;
             margin: 0;
         }
 
         .footer-cta {
             font-size: 13px;
-            color: #333;
+            color: #000;
             margin: 0 0 6px;
         }
 
@@ -678,8 +723,9 @@
             transition: background-color 0.2s;
         }
         
-        .autocomplete-item:hover {
-            background-color: #f9f9f9;
+        .autocomplete-item:hover,
+        .autocomplete-item.kbd-active {
+            background-color: #fff4bf;
         }
         
         .destination-wrapper {
@@ -757,7 +803,7 @@
             }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 700px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
@@ -791,8 +837,9 @@
                         <label>Customer Name</label>
                         <input type="text" id="customerName" placeholder="Enter customer name">
                     </div>
+                    <button class="btn-load-rate" onclick="openRateModal()">📊 Load Rate from Manager</button>
                 </div>
-                
+
                 <div class="form-section">
                     <h2>Route Details</h2>
                     <div class="form-group">
@@ -814,10 +861,20 @@
                         </div>
                     </div>
                 </div>
-                
+
+                <div class="form-section">
+                    <button class="btn-add-lane" onclick="addLane()">+ Add Another Lane</button>
+                    <button class="btn-add-lane" id="addRailSameLaneBtn" onclick="toggleRailComparison()" style="display:none; margin-top:8px; background:#000; color:#FFD700;">+ Add Rail Rates to Same Lane</button>
+                    <small id="addRailSameLaneHint" style="display:none; color:#666; margin-top:4px;">Shows a Truck and Rail comparison for the same lane — only when that lane exists in your rail rates.</small>
+                </div>
+
+                <div class="form-section" id="additionalLanesSection" style="display:none;">
+                    <h2>Additional Lanes</h2>
+                    <div id="additionalLanesContainer"></div>
+                </div>
+
                 <div class="form-section">
                     <h2>Rates</h2>
-                    <button class="btn-load-rate" onclick="openRateModal()">📊 Load Rate from Manager</button>
                     <div class="form-group" id="tieredMenuRow" style="display:none;">
                         <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:700;">
                             <input type="checkbox" id="tieredMenuMode" onchange="generateQuote()" style="width:auto; margin:0;">
@@ -901,12 +958,6 @@
                 </div>
 
                 <div class="form-section">
-                    <h2>Additional Lanes</h2>
-                    <div id="additionalLanesContainer"></div>
-                    <button class="btn-add-lane" onclick="addLane()">+ Add Another Lane</button>
-                </div>
-                
-                <div class="form-section">
                     <h2>Services</h2>
                     <div class="form-group">
                         <label>Drop/Pick ZIP</label>
@@ -986,7 +1037,7 @@
                     <label>Rail Ramp</label>
                     <select id="modalRailRamp">
                         <option value="">Select ramp...</option>
-                        <option value="Laveen Yard/Phoenix RR">Laveen Yard/Phoenix RR</option>
+                        <option value="Phoenix RR">Phoenix RR</option>
                         <option value="Tucson Rail">Tucson Rail</option>
                         <option value="BNSF Rail">BNSF Rail</option>
                     </select>
@@ -1065,19 +1116,24 @@
     <script>
         let customFields = [];
         let rateData = {};
-        let tankerActive = false;
         let triaxleActive = false;
         let customQuoteMode = false;
+        let quoteIsCustomQuote = false; // persists past closeRateModal() resetting customQuoteMode, so build*Quote() can still see it
         let lanes = [];            // ids of additional lanes, in display order
         let laneCounter = 0;       // ever-increasing id source
         let rateModalTarget = null; // null = main form; otherwise a lane id
         let laneStoredChassis = {}; // per-lane chassis stashed while triaxle is ON
+        let railComparison = false; // import tab: show Truck vs Rail comparison
         
         const SURCHARGES = {
             tanker: 225.00,
             triaxlePhoenix: 250.00,
             triaxleLosAngeles: 250.00
         };
+
+        // California import lanes use a $150 triaxle (vs $250 for other import/rail lanes).
+        function isCaLocation(loc) { return /,\s*(CA|California)\b/i.test(loc || ''); }
+        function importTriaxleFee(loc) { return isCaLocation(loc) ? '150.00' : '250.00'; }
 
         // Display labels for the container type codes picked in the rate modal,
         // used to prefix the "Loaded Container" line in generated Import quotes.
@@ -1155,15 +1211,18 @@
 
         // Fixed set of rail ramps a Rail Ramp Export pickup can price to; maps display name -> data field
         const RAIL_RAMPS = {
-            'Laveen Yard/Phoenix RR': 'laveenYard',
+            'Phoenix RR': 'laveenYard',
             'Tucson Rail': 'tucsonRail',
             'BNSF Rail': 'bnsfRail'
         };
 
         let modalRateInfo = null;
 
-        function switchMode(mode) {
+        async function switchMode(mode) {
             currentMode = mode;
+            quoteIsCustomQuote = false;
+            // Always refresh rates from Firebase when switching modes
+            await loadRatesFromManager();
             
             // Update button styles
             const importBtn = document.getElementById('importBtn');
@@ -1179,6 +1238,7 @@
             if (railBtn) railBtn.classList.remove('active');
             if (railExportBtn) railExportBtn.classList.remove('active');
             if (railRampExportBtn) railRampExportBtn.classList.remove('active');
+
 
             if (mode === 'import') {
                 importBtn.classList.add('active');
@@ -1260,12 +1320,12 @@
 
             // Update triaxle placeholder based on mode
             const triaxleInput = document.getElementById('triaxleSurcharge');
-            if (mode === 'import' || mode === 'rail') {
+            if (mode === 'import') {
                 triaxleInput.placeholder = '$250';
-            } else if (mode === 'export' || mode === 'railExport') {
+            } else if (mode === 'export') {
                 triaxleInput.placeholder = '$150';
             } else {
-                // LOCAL
+                // rail import, rail export, local import, local export
                 triaxleInput.placeholder = '$100';
             }
 
@@ -1302,6 +1362,17 @@
                     if (mb) mb.checked = false;
                 }
             }
+
+            // "Add Rail Rates to Same Lane" is import-only
+            const addRailBtn = document.getElementById('addRailSameLaneBtn');
+            const addRailHint = document.getElementById('addRailSameLaneHint');
+            const railAllowed = (currentMode === 'import' || currentMode === 'export');
+            if (!railAllowed) railComparison = false;
+            if (addRailBtn) {
+                addRailBtn.style.display = railAllowed ? 'block' : 'none';
+                addRailBtn.textContent = railComparison ? '\u2715 Remove Rail Comparison' : '+ Add Rail Rates to Same Lane';
+            }
+            if (addRailHint) addRailHint.style.display = railAllowed ? 'block' : 'none';
             
             // Get the surcharge containers more accurately
             const liveUnloadInput = document.getElementById('liveUnloadRate');
@@ -1361,16 +1432,24 @@
                 toLocation.style.backgroundColor = 'white';
                 toLocation.style.cursor = 'auto';
                 
-                // Populate toLocation with local cities
-                if (rateData.local && rateData.local.rates) {
-                    toLocation.innerHTML = rateData.local.rates.map(rate =>
-                        `<option value="${rate.destination}">${rate.destination}</option>`
-                    ).join('');
-                    toLocation.onchange = function() {
-                        updateLocalRate();
-                        generateQuote();
-                    };
-                }
+                // Set up toLocation as autocomplete for local destinations
+                toLocation.placeholder = 'Type or select city...';
+                toLocation.onchange = function() {
+                    updateLocalRate();
+                    generateQuote();
+                };
+                // Show autocomplete list immediately on focus
+                toLocation.addEventListener('focus', function() {
+                    if (currentMode === 'local') {
+                        const list = document.getElementById('toLocationAutocompleteList');
+                        if (rateData.local && rateData.local.rates) {
+                            list.innerHTML = rateData.local.rates.map(rate =>
+                                `<div class="autocomplete-item" onclick="selectToLocation('${rate.destination.replace(/'/g, "\\'")}')">${rate.destination}</div>`
+                            ).join('');
+                            list.style.display = 'block';
+                        }
+                    }
+                }, { once: true });
                 
                 // Show liveUnload in local mode
                 if (liveUnloadContainer) liveUnloadContainer.style.display = 'block';
@@ -1577,16 +1656,25 @@
         }
 
         // Load rates from Rate Manager
-        function loadRatesFromManager() {
+        async function loadRatesFromManager() {
             try {
-                const stored = localStorage.getItem('dsl_rates');
-                
-                // Load existing data from localStorage
-                if (stored) {
-                    rateData = JSON.parse(stored);
-                } else {
-                    rateData = {};
+                // Always fetch fresh rates from Firebase first
+                try {
+                    const res = await fetch('https://rate-manager-dsl-default-rtdb.firebaseio.com/rates.json');
+                    if (res.ok) {
+                        const firebaseData = await res.json();
+                        if (firebaseData) {
+                            localStorage.setItem('dsl_rates', JSON.stringify(firebaseData));
+                            rateData = firebaseData;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Firebase unavailable, falling back to localStorage:', e);
+                    const stored = localStorage.getItem('dsl_rates');
+                    rateData = stored ? JSON.parse(stored) : {};
                 }
+
+                if (!rateData) rateData = {};
                 
                 // Populate EXPORT_DESTINATIONS from Rate Manager
                 if (rateData.export && rateData.export.rates && rateData.export.rates.length > 0) {
@@ -1685,6 +1773,22 @@
                     return;
                 }
 
+                // Show autocomplete in local mode - all destinations or filtered
+                if (currentMode === 'local') {
+                    const localDests = (rateData.local && rateData.local.rates)
+                        ? rateData.local.rates.map(r => r.destination)
+                        : [];
+                    const filtered = value.length === 0
+                        ? localDests
+                        : localDests.filter(d => d.toLowerCase().includes(value));
+                    if (filtered.length === 0) { list.style.display = 'none'; return; }
+                    list.innerHTML = filtered.map(d =>
+                        `<div class="autocomplete-item" onclick="selectToLocation('${d.replace(/'/g, "\\'")}')">${d}</div>`
+                    ).join('');
+                    list.style.display = 'block';
+                    return;
+                }
+
                 // Show autocomplete in import and rail modes
                 if (currentMode !== 'import' && currentMode !== 'rail') {
                     list.style.display = 'none';
@@ -1726,6 +1830,8 @@
             document.getElementById('toLocationAutocompleteList').style.display = 'none';
             if (currentMode === 'railRampExport') {
                 updateRailRampExportRate();
+            } else if (currentMode === 'local') {
+                updateLocalRate();
             } else {
                 applyImportChassisForDestination();
             }
@@ -1864,14 +1970,12 @@
                 }
             } else {
                 // Turn ON - set based on mode and location
-                if (currentMode === 'local') {
+                if (currentMode === 'local' || currentMode === 'railRampExport' || currentMode === 'rail' || currentMode === 'railExport') {
                     triaxleInput.value = '100.00';
                 } else if (currentMode === 'export') {
                     triaxleInput.value = '150.00';
-                } else if (fromLocationDropdown === 'los_angeles') {
-                    triaxleInput.value = SURCHARGES.triaxleLosAngeles.toFixed(2);
-                } else if (fromLocationDropdown === 'phoenix') {
-                    triaxleInput.value = SURCHARGES.triaxlePhoenix.toFixed(2);
+                } else if (currentMode === 'import') {
+                    triaxleInput.value = importTriaxleFee(document.getElementById('toLocation').value);
                 } else {
                     triaxleInput.value = SURCHARGES.triaxlePhoenix.toFixed(2);
                 }
@@ -1991,12 +2095,12 @@
             generateQuote();
         }
 
-        function openRateModal(laneId) {
+        async function openRateModal(laneId) {
             // Track which lane (if any) this rate load should populate
             rateModalTarget = (laneId === undefined || laneId === null) ? null : laneId;
 
-            // Load rates from Rate Manager first
-            loadRatesFromManager();
+            // Load fresh rates from Firebase first
+            await loadRatesFromManager();
             
             modalRateInfo = null;
             document.getElementById('modalDestination').value = '';
@@ -2022,29 +2126,33 @@
             
             const modalMode = getModalMode();
             if (modalMode === 'export') {
-                // Export mode - show Pick Up
+                // Export mode - show Pick Up, with a container type selector
                 modalDestinationLabel.textContent = 'Pick Up';
                 modalDestinationInput.placeholder = 'Type pick up location...';
-                // Hide container type and steamship line
-                if (containerGroup) containerGroup.style.display = 'none';
+                if (containerGroup) containerGroup.style.display = 'block';
                 if (steamshipGroup) steamshipGroup.style.display = 'none';
-                if (reeferOption) reeferOption.style.display = 'block';
+                if (reeferOption) reeferOption.style.display = 'none';
+                document.getElementById('modalContainerType').value = '40ST_HC';
                 setupExportDestinationAutocomplete();
             } else if (modalMode === 'railExport') {
-                // Rail Export mode - show Pick Up (mirror Export)
+                // Rail Export mode - show Pick Up (mirror Export), with container type
                 modalDestinationLabel.textContent = 'Pick Up';
                 modalDestinationInput.placeholder = 'Type pick up location...';
-                if (containerGroup) containerGroup.style.display = 'none';
+                if (containerGroup) containerGroup.style.display = 'block';
                 if (steamshipGroup) steamshipGroup.style.display = 'none';
-                if (reeferOption) reeferOption.style.display = 'block';
+                if (reeferOption) reeferOption.style.display = 'none';
+                document.getElementById('modalContainerType').value = '40ST_HC';
                 setupRailExportDestinationAutocomplete();
             } else if (modalMode === 'railRampExport') {
-                // Rail Ramp Export mode - Pick Up plus a Rail Ramp selector
+                // Rail Ramp Export mode - Pick Up, a Rail Ramp selector, and container type
                 modalDestinationLabel.textContent = 'Pick Up';
                 modalDestinationInput.placeholder = 'Type pick up location...';
-                if (containerGroup) containerGroup.style.display = 'none';
+                if (containerGroup) containerGroup.style.display = 'block';
                 if (steamshipGroup) steamshipGroup.style.display = 'none';
+                if (reeferOption) reeferOption.style.display = 'none';
                 if (railRampGroup) railRampGroup.style.display = 'block';
+                document.getElementById('modalContainerType').value = '40ST_HC';
+                document.getElementById('modalRailRamp').value = 'Phoenix RR';
                 setupRailRampExportDestinationAutocomplete();
             } else if (modalMode === 'local') {
                 // Local mode - show Delivery
@@ -2054,6 +2162,7 @@
                 if (containerGroup) containerGroup.style.display = 'block';
                 if (steamshipGroup) steamshipGroup.style.display = 'none';
                 if (reeferOption) reeferOption.style.display = 'none';
+                document.getElementById('modalContainerType').value = '40ST_HC';
                 setupLocalDestinationAutocomplete();
             } else if (modalMode === 'rail') {
                 // Import Rail mode - Delivery, two container tiers, keep steamship
@@ -2065,6 +2174,12 @@
                     `<option value="">Select type...</option>` +
                     `<option value="40_45">40' / 45'</option>` +
                     `<option value="20">20'</option>`;
+                document.getElementById('modalContainerType').value = '40_45';
+                document.getElementById('modalSteamshipLine').innerHTML =
+                    `<option value="">Select line type...</option>` +
+                    `<option value="ssl">Premium Lines (SSL)</option>` +
+                    `<option value="other">Other Lines</option>`;
+                document.getElementById('modalSteamshipLine').value = 'ssl';
                 setupRailDestinationAutocomplete();
             } else {
                 // Import mode - show Delivery
@@ -2074,10 +2189,59 @@
                 if (containerGroup) containerGroup.style.display = 'block';
                 if (steamshipGroup) steamshipGroup.style.display = 'block';
                 if (reeferOption) reeferOption.style.display = 'block';
+                document.getElementById('modalContainerType').value = '40ST_HC';
+                document.getElementById('modalSteamshipLine').innerHTML =
+                    `<option value="">Select line type...</option>` +
+                    `<option value="ssl">Premium Lines (SSL)</option>` +
+                    `<option value="other">Other Lines (+$480)</option>`;
+                document.getElementById('modalSteamshipLine').value = 'ssl';
                 setupDestinationAutocomplete();
             }
-            
+
+            initModalAutocompleteKeys();
             document.getElementById('rateModal').classList.add('show');
+        }
+
+        // Keyboard navigation for the modal's Delivery/Pick Up autocomplete list.
+        // Bound once; works for whichever setup function populated the list.
+        let modalAcIndex = -1;
+        function modalAcItems() {
+            return Array.prototype.slice.call(document.querySelectorAll('#modalAutocompleteList .autocomplete-item'));
+        }
+        function modalAcHighlight(i) {
+            const items = modalAcItems();
+            items.forEach(el => el.classList.remove('kbd-active'));
+            if (i >= 0 && i < items.length) {
+                items[i].classList.add('kbd-active');
+                items[i].scrollIntoView({ block: 'nearest' });
+            }
+            modalAcIndex = i;
+        }
+        function initModalAutocompleteKeys() {
+            const input = document.getElementById('modalDestination');
+            if (!input || input.dataset.kbdBound) return;
+            input.dataset.kbdBound = '1';
+            // Re-typing invalidates the current highlight.
+            input.addEventListener('input', () => { modalAcIndex = -1; });
+            input.addEventListener('keydown', (e) => {
+                const list = document.getElementById('modalAutocompleteList');
+                const items = modalAcItems();
+                const open = list && list.style.display !== 'none' && items.length > 0;
+                if (e.key === 'ArrowDown') {
+                    if (!open) return;
+                    e.preventDefault();
+                    modalAcHighlight(Math.min(modalAcIndex + 1, items.length - 1));
+                } else if (e.key === 'ArrowUp') {
+                    if (!open) return;
+                    e.preventDefault();
+                    modalAcHighlight(Math.max(modalAcIndex - 1, 0));
+                } else if (e.key === 'Enter') {
+                    if (open && modalAcIndex >= 0) { e.preventDefault(); items[modalAcIndex].click(); }
+                } else if (e.key === 'Escape') {
+                    if (list) list.style.display = 'none';
+                    modalAcIndex = -1;
+                }
+            });
         }
 
         function closeRateModal() {
@@ -2649,10 +2813,8 @@
                     alert('Destination not found');
                     return;
                 }
+                // Rail moves do not carry the $480 non-preferred (truck) surcharge.
                 let baseRate = rateRow[containerType];
-                if (steamshipLine === 'other') {
-                    baseRate += 480;
-                }
                 const fscAmount = baseRate * rateData.fsc;
                 const rateWithFSC = baseRate + fscAmount;
                 modalRateInfo = {
@@ -2955,6 +3117,8 @@
                 setLaneFromRateFields(target, vals);
             } else {
                 applyModalRateCore();
+                // closeRateModal() below clears customQuoteMode, so snapshot it here for generateQuote()
+                quoteIsCustomQuote = customQuoteMode;
             }
 
             closeRateModal();
@@ -3007,6 +3171,17 @@
             `).join('');
         }
 
+        // Today's date, for the "Date:" line under the customer name.
+        function qDate() {
+            try { return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); }
+            catch (e) { return new Date().toDateString(); }
+        }
+        // The rate-validity disclaimer, shown as a yellow banner so it stands out.
+        function validityNote() {
+            return '<div class="validity-banner">This quotation is valid for 30 days from the date issued. Rates are subject to change thereafter.</div>';
+        }
+
+
         function buildExportQuote(customerName, overrides, showNotesFooter) {
             const o = overrides || null;
             const showNF = showNotesFooter !== false;
@@ -3052,6 +3227,7 @@
                 <div class="quote-heading-container">
                     <p class="quote-heading-title">EXPORT SHIPMENT</p>
                     <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
                 </div>
                 
                 <div class="route-info">
@@ -3123,7 +3299,7 @@
                             <td>$${scaleTicketValue}</td>
                         </tr>
                         ` : ''}
-                        <tr style="border-top: 2px solid #FFD700; font-weight: bold; background-color: #f9f9f9;">
+                        <tr class="total-row">
                             <td>Total Cost of Transportation</td>
                             <td>$${totalExportCost}</td>
                         </tr>
@@ -3135,7 +3311,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${fromCity}: Free` : '',
-                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
+                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
                             `No chassis split or pre-pull charges`,
                             `Live Loading in ${fromCity} (2 free hours) – $97.50/hr`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3146,8 +3322,8 @@
                     </div>
                 </div>
                 
-                ${showNF ? `<p class="note">NOTE: Rates subject to fuel surcharge adjustment.</p>
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 would apply in place of the flat chassis fee.</p>
+                ${showNF ? `${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Rates subject to fuel surcharge adjustment.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:export@dsllog.com">export@dsllog.com</a></p>
@@ -3203,6 +3379,7 @@
                 <div class="quote-heading-container">
                     <p class="quote-heading-title">RAIL EXPORT SHIPMENT</p>
                     <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
                 </div>
                 
                 <div class="route-info">
@@ -3274,7 +3451,7 @@
                             <td>$${scaleTicketValue}</td>
                         </tr>
                         ` : ''}
-                        <tr style="border-top: 2px solid #FFD700; font-weight: bold; background-color: #f9f9f9;">
+                        <tr class="total-row">
                             <td>Total Cost of Transportation</td>
                             <td>$${totalExportCost}</td>
                         </tr>
@@ -3286,7 +3463,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${fromCity}: Free` : '',
-                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
+                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
                             `No chassis split or pre-pull charges`,
                             `Live Loading in ${fromCity} (2 free hours) – $97.50/hr`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3297,8 +3474,8 @@
                     </div>
                 </div>
                 
-                ${showNF ? `<p class="note">NOTE: Rates subject to fuel surcharge adjustment.</p>
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 would apply in place of the flat chassis fee.</p>
+                ${showNF ? `${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Rates subject to fuel surcharge adjustment.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $100.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:export@dsllog.com">export@dsllog.com</a></p>
@@ -3349,6 +3526,7 @@
                 <div class="quote-heading-container">
                     <p class="quote-heading-title">Local Move</p>
                     <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
                 </div>
 
                 <div class="route-info">
@@ -3420,7 +3598,7 @@
                             <td>$${scaleTicketValue}</td>
                         </tr>
                         ` : ''}
-                        <tr style="border-top: 2px solid #FFD700; font-weight: bold; background-color: #f9f9f9;">
+                        <tr class="total-row">
                             <td>Total Cost of Transportation</td>
                             <td>$${totalRampExportCost}</td>
                         </tr>
@@ -3441,8 +3619,8 @@
                     </div>
                 </div>
 
-                ${showNF ? `<p class="note">NOTE: Rates subject to fuel surcharge adjustment.</p>
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 would apply in place of the flat chassis fee.</p>
+                ${showNF ? `${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Rates subject to fuel surcharge adjustment.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $100.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:export@dsllog.com">export@dsllog.com</a></p>
@@ -3588,6 +3766,7 @@
                 <div class="quote-heading-container">
                     <p class="quote-heading-title">Local Move</p>
                     <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
                 </div>
                 
                 <div class="route-info">
@@ -3619,7 +3798,7 @@
                         ${reeferRow}
                         ${gensetRow}
                         ${scaleTicketRow}
-                        <tr style="border-top: 2px solid #FFD700; font-weight: bold; background-color: #f9f9f9;">
+                        <tr class="total-row">
                             <td>Total Cost of Transportation</td>
                             <td>$${totalLocalCost}</td>
                         </tr>
@@ -3631,7 +3810,7 @@
                     <div class="services-list">
                         ${[
                             hasDropPickFree ? `Drop/pick in ${toCity}: Free` : '',
-                            laneFreeStorage ? `4 days free storage in Phoenix CY` : '',
+                            (laneFreeStorage && !quoteIsCustomQuote) ? `4 days free storage in Phoenix CY` : '',
                             includeNoChassis ? `No additional chassis split charges` : '',
                             `Live Unloading in ${toCity}: Includes 2 free hours; $97.50 each hour after`,
                             tankerSurchargeValue ? `Tanker Surcharge – $${tankerSurchargeValue}` : '',
@@ -3642,8 +3821,8 @@
                     </div>
                 </div>
 
-                ${showNF ? `<p class="note">NOTE: Rates subject to fuel surcharge adjustment.</p>
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $100.00 would apply in place of the flat chassis fee.</p>
+                ${showNF ? `${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Rates subject to fuel surcharge adjustment.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $100.00 would apply in place of the flat chassis fee.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:imports@dsllog.com">imports@dsllog.com</a></p>
@@ -3701,7 +3880,7 @@
                                 <td>Chassis Fee <span class="service-desc">(flat, not daily)</span></td>
                                 <td>$${chassis}</td>
                             </tr>
-                            <tr style="border-top: 2px solid #FFD700; font-weight: bold; background-color: #f9f9f9;">
+                            <tr class="total-row">
                                 <td>Total Cost of Transportation</td>
                                 <td>$${f(total)}</td>
                             </tr>
@@ -3720,6 +3899,7 @@
                 <div class="quote-heading-container">
                     <p class="quote-heading-title">IMPORT SHIPMENT</p>
                     <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
                 </div>
                 <div class="menu-quote">
                     <p class="menu-lead"><strong>Delivery Location/Address:</strong> ${toLocation}</p>
@@ -3741,10 +3921,10 @@
                     <p class="menu-section"><strong>Standard fees:</strong></p>
                     <p class="menu-fee">Includes: 2 free hours; $97.50/hour thereafter<br>Hazardous Cargo surcharge: Additional $325.00</p>
                 </div>
-                <p class="note">NOTE: Our chassis fee applies regardless of Steamship Line agreements.</p>
-                ${hasDropPickFree ? `<p class="note">NOTE: Drop/pick in ${toLocation}: Free.</p>` : ''}
-                ${laneFreeStorage ? `<p class="note">NOTE: ${storageDays} days free storage in Phoenix CY.</p>` : ''}
-                <p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $250.00 would apply in place of the flat chassis fee.</p>
+                ${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Our chassis fee applies regardless of Steamship Line agreements.</p>
+                ${hasDropPickFree ? `<p class="note"><strong style="color:#000;">NOTE</strong>: Drop/pick in ${toLocation}: Free.</p>` : ''}
+                ${(laneFreeStorage && !quoteIsCustomQuote) ? `<p class="note"><strong style="color:#000;">NOTE</strong>: ${storageDays} days free storage in Phoenix CY.</p>` : ''}
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $${importTriaxleFee(toLocation)} would apply in place of the flat chassis fee.</p>
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:imports@dsllog.com">imports@dsllog.com</a></p>
                     <p class="footer-text">dsllog.com</p>
@@ -3823,7 +4003,7 @@
             const isExemptSteamshipNoteDestination = isCaliforniaDestination
                 || /\b(Las Vegas|Henderson|Pahrump),\s*NV\b/i.test(toLocation)
                 || /,\s*(UT|Utah)\b/i.test(toLocation);
-            const showSteamshipNote = steamshipLineValue === 'ssl' && !isExemptSteamshipNoteDestination;
+            const showSteamshipNote = steamshipLineValue === 'ssl' && !isExemptSteamshipNoteDestination && !isRail;
             const containerTypeValue = o ? (o.containerType || '') : (document.getElementById('importContainerType').value || '');
             const containerTypeLabel = (isRail ? RAIL_CONTAINER_LABELS : IMPORT_CONTAINER_LABELS)[containerTypeValue] || '';
             const hasDropPickFree = importRate && importRate.dropPickFree;
@@ -3832,7 +4012,7 @@
             let servicesItems = [];
             if (hasDropPickFree) servicesItems.push(`Drop/pick in ${toLocation}: Free`);
             
-            if (includeStorage && laneFreeStorage) {
+            if (includeStorage && laneFreeStorage && !quoteIsCustomQuote) {
                 servicesItems.push(`${storageDays} days free storage in Phoenix CY`);
             }
             if (includeNoChassis) {
@@ -3859,8 +4039,6 @@
 
             const servicesHTML = servicesItems.join(' - ');
 
-            let customHTML = '';
-
             const quoteHTML = `
                 <div class="quote-header">
                     <div class="quote-title">DSL LOGISTICS</div>
@@ -3871,11 +4049,12 @@
                 <div class="quote-heading-container">
                     <p class="quote-heading-title">${isRail ? 'IMPORT RAIL SHIPMENT' : 'IMPORT SHIPMENT'}</p>
                     <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
                 </div>
                 
                 <div class="route-info">
                     <div class="route-from-to">${fromLocation.toUpperCase()} &rarr; ${toLocation.toUpperCase()}</div>
-                    <div class="route-type">${isRail ? 'Import via Rail to U.P. Rail Ramp' : (containerTypeLabel ? containerTypeLabel + ' ' : '') + 'Loaded Container'}</div>
+                    <div class="route-type">${isRail ? 'Import via Rail to U.P. Rail Ramp with final mile delivery to ' + toLocation : (containerTypeLabel || '')}</div>
                 </div>
 
                 <table class="quote-table">
@@ -3948,7 +4127,7 @@
                             <td>$${scaleTicketValue}</td>
                         </tr>
                         ` : ''}
-                        <tr style="border-top: 2px solid #FFD700; font-weight: bold; background-color: #f9f9f9;">
+                        <tr class="total-row">
                             <td>Total Cost of Transportation</td>
                             <td>$${totalCostTransportation}</td>
                         </tr>
@@ -3962,9 +4141,9 @@
                     </div>
                 </div>
                 
-                ${showNF ? `<p class="note">NOTE: Chassis fee applies regardless of Steamship Line agreements.</p>
-                ${showSteamshipNote ? `<p class="note">NOTE: If the Steamship Line is not one of our preferred carriers (APL, COSCO, CMA, Evergreen, Hamburg S&uuml;d, Hapag-Lloyd, Maersk, Matson, MSC, ONE, OOCL, Wan Hai), a $480 non-preferred carrier surcharge is added to the base transport rate before the Fuel Surcharge is calculated:<br>(Base Transport Rate + $480) &times; 1.57 = Total Transportation Cost<br>The 57% FSC applies to the combined amount, not the base rate alone.</p>
-                ` : ''}<p class="note">NOTE: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $250.00 would apply in place of the flat chassis fee.</p>
+                ${showNF ? `${validityNote()}${showSteamshipNote ? `<p class="note"><strong style="color:#000;">NOTE &mdash; Import Moves Only</strong>: If the Steamship Line is not one of our preferred carriers (APL, COSCO, CMA, Evergreen, Hamburg S&uuml;d, Hapag-Lloyd, Maersk, Matson, MSC, ONE, OOCL, Wan Hai), a $480 non-preferred carrier surcharge is added to the base transport rate before the Fuel Surcharge is calculated:<br>(Base Transport Rate + $480) &times; 1.62 = Total Transportation Cost<br>The 62% FSC applies to the combined amount, not the base rate alone.</p>
+                ` : ''}<p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $${isRail ? '100.00' : importTriaxleFee(toLocation)} would apply in place of the flat chassis fee.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: Chassis fee applies regardless of Steamship Line agreements.</p>
 
                 <div class="footer">
                     <p class="footer-cta">To place an order, email <a href="mailto:imports@dsllog.com">imports@dsllog.com</a></p>
@@ -3988,8 +4167,113 @@
             return buildBlockForMode(currentMode, customerName, overrides, showNotesFooter);
         }
 
+        // ===== Shared Quote Log Integration (Phase 1) =====
+        // Writes a structured quote record to the same Firebase project Rate Manager
+        // already uses, so the Shared Quote Log tool can read it without any manual re-entry.
+
+        function mapModeToQuoteType(mode) {
+            if (mode === 'export') return 'Export';
+            if (mode === 'railExport') return 'Rail Export';
+            if (mode === 'railRampExport') return 'Rail Export';
+            if (mode === 'local') return 'STD Local';
+            if (mode === 'rail') return 'Rail Import';
+            return 'Import';
+        }
+
+        // Mirrors the from/to resolution logic already used inside each buildXQuote()
+        // function, so the logged lane matches exactly what the customer was quoted.
+        function getCurrentFromTo(mode) {
+            const fromEl = document.getElementById('fromLocation');
+            const toEl = document.getElementById('toLocation');
+            const fromVal = fromEl ? fromEl.value : '';
+            const toVal = toEl ? toEl.value : '';
+            const customLocationEl = document.getElementById('customLocation');
+            const customLocation = customLocationEl ? customLocationEl.value : '';
+
+            let from, to;
+
+            if (mode === 'export') {
+                from = fromVal;
+                to = 'Port of Los Angeles/Long Beach';
+            } else if (mode === 'railExport') {
+                from = fromVal;
+                to = 'Port of Los Angeles/Long Beach RAIL';
+            } else if (mode === 'railRampExport') {
+                from = fromVal;
+                to = toVal;
+            } else if (mode === 'local') {
+                from = (fromVal === 'phoenix_rr') ? 'PHOENIX RR' : 'PHOENIX CY';
+                to = toVal;
+            } else if (mode === 'rail') {
+                from = (fromVal === 'other') ? (customLocation || 'Custom Location') : 'Port of Los Angeles/Long Beach RAIL';
+                to = toVal;
+            } else {
+                // import (default)
+                if (fromVal === 'los_angeles') {
+                    from = 'Port of Los Angeles/Long Beach';
+                } else if (fromVal === 'other') {
+                    from = customLocation || 'Custom Location';
+                } else {
+                    from = 'Port of Los Angeles/Long Beach';
+                }
+                to = toVal;
+            }
+            return { from: from || '', to: to || '' };
+        }
+
+        function logQuoteToSharedLog() {
+            // Defensive: this must never break the actual copy-to-clipboard experience,
+            // so any failure here is caught and logged to console only.
+            try {
+                const customerName = document.getElementById('customerName').value || 'Customer';
+                const fromTo = getCurrentFromTo(currentMode);
+                const transportRate = parseFloat(document.getElementById('transportRate').value) || 0;
+                const fuelSurchargePercent = parseFloat(document.getElementById('fuelSurcharge').value) || 0;
+                const chassisRate = parseFloat(document.getElementById('chassisRate').value) || 0;
+                const estimatedTotal = (transportRate + (transportRate * fuelSurchargePercent / 100) + chassisRate).toFixed(2);
+
+                const now = new Date();
+                const quotedDate = now.toISOString().slice(0, 10);
+                const validUntilDate = new Date(now);
+                validUntilDate.setDate(validUntilDate.getDate() + 30);
+                const validUntil = validUntilDate.toISOString().slice(0, 10);
+
+                const quoteRecord = {
+                    customer: customerName,
+                    quoteType: mapModeToQuoteType(currentMode),
+                    sourceMode: currentMode,
+                    from: fromTo.from,
+                    to: fromTo.to,
+                    transportRate: transportRate,
+                    fuelSurchargePercent: fuelSurchargePercent,
+                    chassisRate: chassisRate,
+                    rate: '$' + estimatedTotal + ' (est.)',
+                    quotedBy: '',
+                    quotedDate: quotedDate,
+                    validUntil: validUntil,
+                    notes: '',
+                    orderPlaced: false,
+                    loggedAt: now.toISOString()
+                };
+
+                fetch('https://rate-manager-dsl-default-rtdb.firebaseio.com/quotes.json', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(quoteRecord)
+                }).catch(err => console.error('Shared Quote Log write failed:', err));
+            } catch (err) {
+                console.error('Shared Quote Log logging error:', err);
+            }
+        }
+
         function generateQuote() {
             const customerName = document.getElementById('customerName').value || 'Customer';
+
+            // Keep the truck-import triaxle placeholder in step with the destination ($150 for CA)
+            if (currentMode === 'import') {
+                const tphEl = document.getElementById('triaxleSurcharge');
+                if (tphEl) tphEl.placeholder = isCaLocation(document.getElementById('toLocation').value) ? '$150' : '$250';
+            }
 
             // Tiered menu quote (import only) — a standalone full-pricing reply
             const menuBox = document.getElementById('tieredMenuMode');
@@ -4003,6 +4287,20 @@
                 return;
             }
 
+            // Truck and Rail comparison (import & export) — one combined block
+            if (railComparison && (currentMode === 'import' || currentMode === 'export')) {
+                const comboHTML = (currentMode === 'export')
+                    ? buildTruckRailExportComparison(customerName)
+                    : buildTruckRailComparison(customerName);
+                if (comboHTML) {
+                    document.getElementById('quoteContent').innerHTML = comboHTML;
+                    document.getElementById('previewContainer').classList.add('show');
+                    document.getElementById('copyFeedback').classList.remove('show');
+                    setTimeout(() => { document.getElementById('previewContainer').scrollIntoView({ behavior: 'smooth' }); }, 100);
+                    return;
+                }
+            }
+
             const laneList = lanes.filter(id => document.getElementById('laneLocation-' + id));
             let html;
 
@@ -4010,30 +4308,32 @@
                 // Single quote: its own notes + footer
                 html = buildBlockForCurrentMode(customerName, null, true);
             } else {
-                // Multiple lanes: each block gets its own notes + footer
-                html = buildBlockForCurrentMode(customerName, null, true);
-                laneList.forEach(id => {
-                    const laneModeEl = document.getElementById('laneMode-' + id);
-                    const laneMode = laneModeEl ? laneModeEl.value : currentMode;
-                    const laneSteamshipEl = document.getElementById('laneSteamship-' + id);
-                    const laneSteamshipValue = laneSteamshipEl ? laneSteamshipEl.value : '';
-                    const laneRampEl = document.getElementById('laneRamp-' + id);
-                    const overrides = {
-                        location: document.getElementById('laneLocation-' + id).value,
-                        ramp: laneRampEl ? laneRampEl.value : '',
-                        transportRate: document.getElementById('laneTransport-' + id).value,
-                        fuelSurcharge: document.getElementById('laneFuel-' + id).value,
-                        chassisRate: document.getElementById('laneChassis-' + id).value,
-                        steamshipLine: laneSteamshipValue,
-                        containerType: document.getElementById('laneContainerType-' + id).value,
-                        tanker: document.getElementById('laneTanker-' + id).value,
-                        hazmat: document.getElementById('laneHazmat-' + id).value,
-                        triaxle: document.getElementById('laneTriaxle-' + id).value,
-                        split: document.getElementById('laneSplit-' + id).value,
-                        residential: document.getElementById('laneResidential-' + id).value
-                    };
-                    html += '<div class="lane-quote-separator">&nbsp;</div>' + buildBlockForMode(laneMode, customerName, overrides, true);
-                });
+                // Multi-lane: brand once, each lane compact (route + rates + services),
+                // then the validity banner, notes and footer once at the bottom.
+                const full1 = buildBlockForCurrentMode(customerName, null, true);
+                const splitIdx = full1.indexOf('<div class="validity-banner"');
+                if (splitIdx === -1) {
+                    // Structure unexpected — fall back to a full block per lane.
+                    html = full1;
+                    laneList.forEach(id => {
+                        const laneModeEl = document.getElementById('laneMode-' + id);
+                        const laneMode = laneModeEl ? laneModeEl.value : currentMode;
+                        html += '<div class="lane-quote-separator">&nbsp;</div>' + buildBlockForMode(laneMode, customerName, laneOverrides(id), true);
+                    });
+                } else {
+                    const head1 = full1.slice(0, splitIdx);  // header + lane-1 body + services
+                    const terms = full1.slice(splitIdx);      // validity + notes + footer (shown once)
+                    html = addLaneLabel(head1, 1);
+                    laneList.forEach((id, i) => {
+                        const laneModeEl = document.getElementById('laneMode-' + id);
+                        const laneMode = laneModeEl ? laneModeEl.value : currentMode;
+                        const block = buildBlockForMode(laneMode, customerName, laneOverrides(id), false);
+                        const bodyStart = block.indexOf('<div class="route-info"');
+                        const body = bodyStart === -1 ? block : block.slice(bodyStart);
+                        html += '<div class="lane-head">Lane ' + (i + 2) + '</div>' + body;
+                    });
+                    html += terms;
+                }
             }
 
             document.getElementById('quoteContent').innerHTML = html;
@@ -4046,6 +4346,32 @@
         }
 
         // ---- Additional lanes ----
+        // Collect an additional lane's field values into an overrides object.
+        function laneOverrides(id) {
+            const laneSteamshipEl = document.getElementById('laneSteamship-' + id);
+            const laneRampEl = document.getElementById('laneRamp-' + id);
+            return {
+                location: document.getElementById('laneLocation-' + id).value,
+                ramp: laneRampEl ? laneRampEl.value : '',
+                transportRate: document.getElementById('laneTransport-' + id).value,
+                fuelSurcharge: document.getElementById('laneFuel-' + id).value,
+                chassisRate: document.getElementById('laneChassis-' + id).value,
+                steamshipLine: laneSteamshipEl ? laneSteamshipEl.value : '',
+                containerType: document.getElementById('laneContainerType-' + id).value,
+                tanker: document.getElementById('laneTanker-' + id).value,
+                hazmat: document.getElementById('laneHazmat-' + id).value,
+                triaxle: document.getElementById('laneTriaxle-' + id).value,
+                split: document.getElementById('laneSplit-' + id).value,
+                residential: document.getElementById('laneResidential-' + id).value
+            };
+        }
+        // Insert a "Lane N" label just before the route line of a quote block.
+        function addLaneLabel(blockHtml, n) {
+            const idx = blockHtml.indexOf('<div class="route-info"');
+            if (idx === -1) return blockHtml;
+            return blockHtml.slice(0, idx) + '<div class="lane-head">Lane ' + n + '</div>' + blockHtml.slice(idx);
+        }
+
         function laneLocationLabelFor(mode) {
             return (mode === 'export' || mode === 'railExport' || mode === 'railRampExport') ? 'From (Pick Up)' : 'To (Delivery)';
         }
@@ -4120,8 +4446,8 @@
         // Swap a lane's Location control to match its mode: a pickup dropdown that auto-fills
         // the rate for Export / Rail Export / Rail Ramp Export, or a free-text input otherwise.
         // Rail Ramp Export also gets a second dropdown for the destination ramp.
-        function rebuildLaneLocation(id, mode) {
-            loadRatesFromManager(); // ensure the pickup lists are current
+        async function rebuildLaneLocation(id, mode) {
+            await loadRatesFromManager(); // ensure the pickup lists are current
             const el = document.getElementById('laneLocation-' + id);
             if (!el) return;
             const group = el.parentElement;
@@ -4178,7 +4504,7 @@
                 if (btn) { btn.classList.remove('active'); btn.textContent = 'OFF'; }
             });
             const triaxleInp = document.getElementById('laneTriaxle-' + id);
-            if (triaxleInp) triaxleInp.placeholder = (mode === 'import' || mode === 'rail') ? '$250' : (mode === 'export' || mode === 'railExport' || mode === 'railRampExport') ? '$150' : '$100';
+            if (triaxleInp) triaxleInp.placeholder = (mode === 'import') ? '$250' : (mode === 'export') ? '$150' : '$100';
             rebuildLaneLocation(id, mode);
             generateQuote();
         }
@@ -4217,7 +4543,9 @@
                 }
             } else {
                 // Triaxle replaces the flat chassis fee, so stash & zero the lane chassis
-                inp.value = (mode === 'import' || mode === 'rail') ? '250.00' : (mode === 'export' || mode === 'railExport') ? '150.00' : '100.00';
+                const laneLocEl = document.getElementById('laneLocation-' + id);
+                const laneImportFee = (laneLocEl && isCaLocation(laneLocEl.value)) ? '150.00' : '250.00';
+                inp.value = (mode === 'import' || mode === 'rail') ? laneImportFee : (mode === 'export' || mode === 'railExport') ? '150.00' : '100.00';
                 btn.classList.add('active');
                 btn.textContent = 'ON';
                 laneStoredChassis[id] = chassis.value;
@@ -4243,6 +4571,244 @@
                 btn.textContent = 'ON';
             }
             generateQuote();
+        }
+
+        // ---- Import tab: Truck vs Rail comparison for the same destination ----
+        // Pull the rail transport rate from a row, tolerant of either schema:
+        // import-style tier columns (40ST_HC / 20_45 / NOR_REEFER) OR export/local-style baseRate.
+        function railRateFromRow(row, truckTier) {
+            if (!row) return 0;
+            const num = v => { if (v == null) return NaN; const n = Number(String(v).replace(/[$,\s]/g, '')); return isFinite(n) ? n : NaN; };
+            // Rail Import rows use "20" (20') and "40_45" (40'/45'). Map the truck container tier:
+            //   40ST_HC / reefer / unknown -> 40_45 ;  20_45 -> 20 (20' is the common case)
+            const primary = (truckTier === '20_45') ? '20' : '40_45';
+            const order = [primary, '40_45', '20', '40ST_HC', 'baseRate']; // last two = legacy fallbacks
+            for (const k of order) { if (k && row[k] !== undefined) { const n = num(row[k]); if (isFinite(n) && n > 0) return n; } }
+            return 0;
+        }
+
+        function findImportRailRow(dest) {
+            const list = (rateData.importRail && rateData.importRail.rates) ? rateData.importRail.rates : [];
+            const dl = (dest || '').toLowerCase();
+            const matchDest = r => {
+                if (!r || !r.destination) return false;
+                const rd = String(r.destination).toLowerCase();
+                if (rd === dl || rd.indexOf(dl) !== -1 || dl.indexOf(rd) !== -1) return true;
+                if (Array.isArray(r.aliases) && r.aliases.some(a => String(a).toLowerCase() === dl)) return true;
+                return false;
+            };
+            const matches = list.filter(matchDest);
+            if (!matches.length) return null;
+            // Prefer an exact destination match, then any match that actually yields a rate
+            const exact = matches.find(r => String(r.destination).toLowerCase() === dl);
+            if (exact && railRateFromRow(exact, '40ST_HC') > 0) return exact;
+            const withRate = matches.find(r => railRateFromRow(r, '40ST_HC') > 0);
+            return withRate || exact || matches[0];
+        }
+
+        async function toggleRailComparison() {
+            const btn = document.getElementById('addRailSameLaneBtn');
+            if (railComparison) {
+                railComparison = false;
+                if (btn) btn.textContent = '+ Add Rail Rates to Same Lane';
+                generateQuote();
+                return;
+            }
+            await loadRatesFromManager();
+            if (currentMode === 'export') {
+                const city = (document.getElementById('fromLocation').value || '').trim();
+                if (!city) { alert('Select an export pickup location first, then add rail rates.'); return; }
+                if (!findExportRailRow(city)) {
+                    alert('No Rail Export rate is on file for "' + city + '".\n\nOnly pickup locations that exist in your Rail Export rates can be compared.');
+                    return;
+                }
+            } else {
+                const dest = (document.getElementById('toLocation').value || '').trim();
+                if (!dest) { alert('Select or enter an import delivery destination first, then add rail rates.'); return; }
+                if (!findImportRailRow(dest)) {
+                    alert('No Rail Import rate is on file for "' + dest + '".\n\nOnly destinations that exist in your Rail Import rates can be compared.');
+                    return;
+                }
+            }
+            railComparison = true;
+            if (btn) btn.textContent = '\u2715 Remove Rail Comparison';
+            generateQuote();
+        }
+
+        function buildTruckRailComparison(customerName) {
+            const toLocation = document.getElementById('toLocation').value || 'Delivery Location';
+            const row = findImportRailRow(toLocation);
+            if (!row) return null;
+
+            // Truck side (from the main form)
+            const truckT = parseFloat(document.getElementById('transportRate').value) || 0;
+            const fscT = parseFloat(document.getElementById('fuelSurcharge').value) || 0;
+            const truckChassis = parseFloat(document.getElementById('chassisRate').value) || 0;
+
+            // Rail side (Rail Import rates, same container tier as the truck quote)
+            const tier = document.getElementById('importContainerType').value || '40ST_HC';
+            const railT = railRateFromRow(row, tier);
+            // Rail rows carry no FSC, so match the truck quote's FSC (the Rate Manager's current %)
+            const fscR = (row.fuelSurcharge != null && row.fuelSurcharge !== '' && isFinite(Number(row.fuelSurcharge))) ? Number(row.fuelSurcharge) : fscT;
+            const railChassis = 50;
+
+            const f = n => (Number(n) || 0).toFixed(2);
+            const pct = n => (Number(n) || 0).toFixed(1);
+            const truckTotal = truckT + truckT * fscT / 100 + truckChassis;
+            const railTotal  = railT  + railT  * fscR / 100 + railChassis;
+
+            // Flags from the matching Import row
+            const dl = toLocation.toLowerCase();
+            const impRow = (rateData.import && rateData.import.rates)
+                ? rateData.import.rates.find(r => { const rd=(r.destination||'').toLowerCase(); return rd===dl || rd.indexOf(dl)!==-1 || dl.indexOf(rd)!==-1; })
+                : null;
+            const dropFree = impRow && impRow.dropPickFree;
+            const showStorage = impRow ? !!impRow.freeStorage : true;
+            const showSteamship = impRow ? !!impRow.freeStorage : true;
+
+            const liveWord = isCaLocation(toLocation) ? '1 free hour' : '2 free hours';
+            const services = [];
+            if (dropFree) services.push('Drop/pick in ' + toLocation + ': Free');
+            if (showStorage) services.push('4 days free storage in Phoenix CY');
+            services.push('No chassis split or pre-pull charges');
+            services.push('Live Unload in ' + toLocation + ' (' + liveWord + ') \u2013 $97.50/hr');
+            const servicesHTML = services.join(' - ');
+            const triaxleFee = isCaLocation(toLocation) ? '150.00' : '250.00';
+            const numHdr = 'text-align:right;';
+            const col = 'text-align:right; font-weight:bold;';
+
+            return `
+                <div class="quote-header"><div class="quote-title">DSL LOGISTICS</div></div>
+                <div class="divider"></div>
+                <div class="quote-heading-container">
+                    <p class="quote-heading-title">IMPORT SHIPMENT \u2014 TRUCK AND RAIL RATES</p>
+                    <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
+                </div>
+                <div class="route-info">
+                    <div class="route-from-to">PORT OF LOS ANGELES/LONG BEACH TO ${toLocation.toUpperCase()}</div>
+                    <div class="route-type">Truck (direct) and Rail (via Phoenix U.P. Ramp, final mile to ${toLocation})</div>
+                </div>
+                <table class="quote-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th style="${numHdr}">Truck</th>
+                            <th style="${numHdr}">Rail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Transport</td><td style="${col}">*$${f(truckT)}</td><td style="${col}">$${f(railT)}</td></tr>
+                        <tr><td>Fuel Surcharge <span class="service-desc">(weekly review)</span></td><td style="${col}">${pct(fscT)}%</td><td style="${col}">${pct(fscR)}%</td></tr>
+                        <tr><td>Chassis Fee <span class="service-desc">(flat, not daily)</span></td><td style="${col}">$${f(truckChassis)}</td><td style="${col}">$${f(railChassis)}</td></tr>
+                        <tr class="total-row">
+                            <td>Total Cost of Transportation</td>
+                            <td style="text-align:right; color:#000; font-size:18px; font-weight:800;">$${f(truckTotal)}</td>
+                            <td style="text-align:right; color:#000; font-size:18px; font-weight:800;">$${f(railTotal)}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="services-section">
+                    <div class="services-title">Included Services</div>
+                    <div class="services-list">${servicesHTML}</div>
+                </div>
+                ${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Chassis fee applies regardless of Steamship Line agreements.</p>
+                ${showSteamship ? `<p class="note">*<strong style="color:#000;">NOTE</strong>: If the Steamship Line is not one of our preferred carriers (APL, COSCO, CMA, Evergreen, Hamburg S&uuml;d, Hapag-Lloyd, Maersk, Matson, MSC, ONE, OOCL, Wan Hai), a $480 non-preferred carrier surcharge is added to the base transport rate before the Fuel Surcharge is calculated:<br>(Base Transport Rate + $480) &times; 1.62 = Total Transportation Cost<br>The 62% FSC applies to the combined amount, not the base rate alone. Applies to the truck (direct) rate only.</p>` : ''}
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $${triaxleFee} (truck) or $100.00 (rail) would apply in place of the flat chassis fee.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: Rail option delivered via the Phoenix U.P. Rail Ramp with final mile delivery to ${toLocation}.</p>
+                <div class="footer"><p class="footer-text">dsllog.com</p></div>
+            `;
+        }
+
+        function findExportRailRow(city) {
+            const list = (rateData.exportRail && rateData.exportRail.rates) ? rateData.exportRail.rates : [];
+            if (!list.length || !city) return null;
+            const c = city.toLowerCase().trim();
+            const hasRate = r => isFinite(Number(r.baseRate)) && Number(r.baseRate) > 0;
+            const exact = list.find(r => (r.destination || '').toLowerCase().trim() === c);
+            if (exact && hasRate(exact)) return exact;
+            const matches = list.filter(r => { const rd=(r.destination||'').toLowerCase().trim(); return rd && (rd.indexOf(c)!==-1 || c.indexOf(rd)!==-1); });
+            if (!matches.length) return exact || null;
+            return matches.find(hasRate) || exact || matches[0];
+        }
+
+        function buildTruckRailExportComparison(customerName) {
+            const fromCity = document.getElementById('fromLocation').value || 'Pickup Location';
+            const row = findExportRailRow(fromCity);
+            if (!row) return null;
+
+            // Truck side (from the main form)
+            const truckT = parseFloat(document.getElementById('transportRate').value) || 0;
+            const fscT = parseFloat(document.getElementById('fuelSurcharge').value) || 0;
+            const truckChassis = parseFloat(document.getElementById('chassisRate').value) || 0;
+
+            // Rail side (Rail Export rates — same pickup city)
+            const railT = parseFloat(row.baseRate) || 0;
+            const fscR = (row.fuelSurcharge != null && row.fuelSurcharge !== '' && isFinite(Number(row.fuelSurcharge))) ? Number(row.fuelSurcharge) : fscT;
+            const railChassis = 50; // rail export chassis is a flat $50
+
+            const f = n => (Number(n) || 0).toFixed(2);
+            const pct = n => (Number(n) || 0).toFixed(1);
+            const truckTotal = truckT + truckT * fscT / 100 + truckChassis;
+            const railTotal  = railT + railT * fscR / 100 + railChassis;
+
+            // Flags from the matching Export row
+            const cl = fromCity.toLowerCase();
+            const exRow = (rateData.export && rateData.export.rates)
+                ? rateData.export.rates.find(r => { const rd=(r.destination||'').toLowerCase(); return rd===cl || rd.indexOf(cl)!==-1 || cl.indexOf(rd)!==-1; })
+                : null;
+            const dropFree = exRow && exRow.dropPickFree;
+            const showStorage = exRow ? !!exRow.freeStorage : true;
+
+            const services = [];
+            if (dropFree) services.push('Drop/pick in ' + fromCity + ': Free');
+            if (showStorage) services.push('4 days free storage in Phoenix CY');
+            services.push('No chassis split or pre-pull charges');
+            services.push('Live Loading in ' + fromCity + ' (2 free hours) – $97.50/hr');
+            const servicesHTML = services.join(' - ');
+            const numHdr = 'text-align:right;';
+            const col = 'text-align:right; font-weight:bold;';
+
+            return `
+                <div class="quote-header"><div class="quote-title">DSL LOGISTICS</div></div>
+                <div class="divider"></div>
+                <div class="quote-heading-container">
+                    <p class="quote-heading-title">EXPORT SHIPMENT — TRUCK AND RAIL RATES</p>
+                    <p class="quote-heading-customer">${customerName}</p>
+                    <p class="quote-heading-date">Date: ${qDate()}</p>
+                </div>
+                <div class="route-info">
+                    <div class="route-from-to">${fromCity.toUpperCase()} TO PORT OF LOS ANGELES/LONG BEACH</div>
+                    <div class="route-type">Truck (direct) and Rail (empty return via Phoenix U.P. Rail Ramp)</div>
+                </div>
+                <table class="quote-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th style="${numHdr}">Truck</th>
+                            <th style="${numHdr}">Rail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Base Rate</td><td style="${col}">$${f(truckT)}</td><td style="${col}">$${f(railT)}</td></tr>
+                        <tr><td>Fuel Surcharge <span class="service-desc">(weekly review)</span></td><td style="${col}">${pct(fscT)}%</td><td style="${col}">${pct(fscR)}%</td></tr>
+                        <tr><td>Chassis Fee <span class="service-desc">(flat, not daily)</span></td><td style="${col}">$${f(truckChassis)}</td><td style="${col}">$${f(railChassis)}</td></tr>
+                        <tr class="total-row">
+                            <td>Total Cost of Transportation</td>
+                            <td style="text-align:right; color:#000; font-size:18px; font-weight:800;">$${f(truckTotal)}</td>
+                            <td style="text-align:right; color:#000; font-size:18px; font-weight:800;">$${f(railTotal)}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="services-section">
+                    <div class="services-title">Included Services</div>
+                    <div class="services-list">${servicesHTML}</div>
+                </div>
+                ${validityNote()}<p class="note"><strong style="color:#000;">NOTE</strong>: Rates subject to fuel surcharge adjustment.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: For 20' dry containers on this lane weighing between 38,000 and 44,000 LBS, a triaxle fee of $150.00 (truck) or $100.00 (rail) would apply in place of the flat chassis fee.</p>
+                <p class="note"><strong style="color:#000;">NOTE</strong>: Rail option is an empty container return via the Phoenix U.P. Rail Ramp.</p>
+                <div class="footer"><p class="footer-text">dsllog.com</p></div>
+            `;
         }
 
         function addLane() {
@@ -4328,6 +4894,12 @@
             document.getElementById('additionalLanesContainer').appendChild(section);
             rebuildLaneLocation(id, mode);
             renumberLanes();
+            updateLanesSectionVisibility();
+        }
+
+        function updateLanesSectionVisibility() {
+            const sec = document.getElementById('additionalLanesSection');
+            if (sec) sec.style.display = (lanes.length > 0) ? 'block' : 'none';
         }
 
         function removeLane(id) {
@@ -4336,6 +4908,7 @@
             const section = document.getElementById('laneSection-' + id);
             if (section) section.remove();
             renumberLanes();
+            updateLanesSectionVisibility();
             generateQuote();
         }
 
@@ -4362,50 +4935,206 @@
             }, 3000);
         }
 
-        function copyQuote() {
-            const el = document.getElementById('quoteContent');
+        // ---- Outlook-safe copy helpers -------------------------------------------------
+        // Outlook (Word engine) ignores background-color on <div> and drops class-based
+        // text colors. So before copying we inline every style and convert the colored
+        // blocks (header, sub-bar, footer) into <td bgcolor="..."> table cells. The
+        // on-screen quote is left untouched — we transform, copy, then restore.
+        function rgbToHex(c) {
+            if (!c) return '';
+            if (c.charAt(0) === '#') return c;
+            const m = c.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i);
+            if (!m) return '';
+            const h = n => ('0' + parseInt(n, 10).toString(16)).slice(-2);
+            return '#' + h(m[1]) + h(m[2]) + h(m[3]);
+        }
+        function isTransparentColor(c) {
+            if (!c) return true;
+            if (c === 'transparent') return true;
+            // Only a true zero-alpha rgba() is transparent — not an opaque color
+            // whose blue channel happens to be 0 (e.g. #FFD700 = rgb(255,215,0)).
+            return /^rgba\(\d+,\d+,\d+,(0|0?\.0+)\)$/i.test(c.replace(/\s/g, ''));
+        }
+        function inlineAllStyles(root) {
+            const nodes = root.querySelectorAll('*');
+            const textProps = ['color','font-family','font-size','font-weight','font-style','text-align','text-transform','letter-spacing','line-height','text-decoration','vertical-align'];
+            nodes.forEach(n => {
+                const cs = getComputedStyle(n);
+                let s = '';
+                textProps.forEach(p => { const v = cs.getPropertyValue(p); if (v) s += p + ':' + v + ';'; });
+                const bg = cs.getPropertyValue('background-color');
+                if (!isTransparentColor(bg)) s += 'background-color:' + bg + ';';
+                ['top','bottom'].forEach(side => {
+                    const w = cs.getPropertyValue('border-' + side + '-width');
+                    const st = cs.getPropertyValue('border-' + side + '-style');
+                    const co = cs.getPropertyValue('border-' + side + '-color');
+                    if (w && w !== '0px' && st && st !== 'none') s += 'border-' + side + ':' + w + ' ' + st + ' ' + co + ';';
+                });
+                ['top','right','bottom','left'].forEach(side => {
+                    const v = cs.getPropertyValue('padding-' + side); if (v && v !== '0px') s += 'padding-' + side + ':' + v + ';';
+                });
+                ['top','bottom'].forEach(side => {
+                    const v = cs.getPropertyValue('margin-' + side); if (v && v !== '0px') s += 'margin-' + side + ':' + v + ';';
+                });
+                n.setAttribute('style', s);
+            });
+        }
+        function tableizeColoredBlocks(root) {
+            // Convert blocks that carry a background or border into a table cell, which
+            // Outlook (Word engine and New Outlook) renders where it ignores the same on a div.
+            const blocks = root.querySelectorAll('.quote-header, .footer, .services-section, .validity-banner');
+            blocks.forEach(div => {
+                const cs = getComputedStyle(div);
+                const bg = cs.getPropertyValue('background-color');
+                const align = cs.getPropertyValue('text-align');
+                const pt = cs.getPropertyValue('padding-top') || '0';
+                const pr = cs.getPropertyValue('padding-right') || '0';
+                const pb = cs.getPropertyValue('padding-bottom') || '0';
+                const pl = cs.getPropertyValue('padding-left') || '0';
+                const mb = cs.getPropertyValue('margin-bottom');
+                const mt = cs.getPropertyValue('margin-top');
+                // Carry any visible border sides onto the cell.
+                let borderCss = '';
+                ['top', 'right', 'bottom', 'left'].forEach(side => {
+                    const w = cs.getPropertyValue('border-' + side + '-width');
+                    const st = cs.getPropertyValue('border-' + side + '-style');
+                    const co = cs.getPropertyValue('border-' + side + '-color');
+                    if (w && w !== '0px' && st && st !== 'none') borderCss += 'border-' + side + ':' + w + ' ' + st + ' ' + co + ';';
+                });
+                const table = document.createElement('table');
+                table.setAttribute('role', 'presentation');
+                table.setAttribute('width', '100%');
+                table.setAttribute('cellpadding', '0');
+                table.setAttribute('cellspacing', '0');
+                let ts = 'border-collapse:collapse;width:100%;';
+                if (mb && mb !== '0px') ts += 'margin-bottom:' + mb + ';';
+                if (mt && mt !== '0px') ts += 'margin-top:' + mt + ';';
+                table.setAttribute('style', ts);
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                const hex = rgbToHex(bg);
+                if (hex && !isTransparentColor(bg)) td.setAttribute('bgcolor', hex);
+                let ds = 'padding:' + pt + ' ' + pr + ' ' + pb + ' ' + pl + ';';
+                if (!isTransparentColor(bg)) ds += 'background-color:' + bg + ';';
+                ds += borderCss;
+                if (align && align !== 'start' && align !== 'left') { td.setAttribute('align', align); ds += 'text-align:' + align + ';'; }
+                td.setAttribute('style', ds);
+                while (div.firstChild) td.appendChild(div.firstChild);
+                tr.appendChild(td);
+                table.appendChild(tr);
+                div.parentNode.replaceChild(table, div);
+            });
+        }
+        // Outlook (both the Word engine and New Outlook's sanitizer) drops text color on
+        // block elements (p, td, div) and strips <font> tags, but it preserves inline
+        // color on inline <span> elements. So wrap any non-black text in a styled <span>.
+        function wrapTextColorsForOutlook(root) {
+            const els = root.querySelectorAll('*');
+            els.forEach(n => {
+                if (n.tagName === 'SPAN' && /(^|;)\s*color\s*:/i.test(n.getAttribute('style') || '')) return;
+                const hex = rgbToHex(getComputedStyle(n).color);
+                if (!hex || hex === '#000000') return;
+                const kids = Array.prototype.slice.call(n.childNodes);
+                kids.forEach(ch => {
+                    if (ch.nodeType === 3 && ch.textContent.trim() !== '') {
+                        const s = document.createElement('span');
+                        s.setAttribute('style', 'color:' + hex + ';');
+                        n.replaceChild(s, ch);
+                        s.appendChild(ch);
+                    }
+                });
+            });
+        }
 
-            // Primary: reproduce a manual "select the quote and copy" so pasting into
-            // Outlook keeps the on-screen formatting (rich HTML), not plain text.
+        function makeOutlookSafeInPlace(el) {
+            el.querySelectorAll('.divider').forEach(d => d.remove());
+            inlineAllStyles(el);
+            el.querySelectorAll('tr.total-row td').forEach(td => {
+                const bg = getComputedStyle(td).backgroundColor;
+                if (!isTransparentColor(bg)) {
+                    const hex = rgbToHex(bg);
+                    if (hex) td.setAttribute('bgcolor', hex);
+                }
+            });
+            wrapTextColorsForOutlook(el);
+            el.querySelectorAll('table.quote-table').forEach(t => {
+                t.setAttribute('width', '100%');
+                t.setAttribute('cellspacing', '0');
+                t.setAttribute('cellpadding', '0');
+                t.style.borderCollapse = 'collapse';
+            });
+            tableizeColoredBlocks(el);
+            // Wrap the whole quote in one full-width table cell so every block — the
+            // colored bars (tables) and the services/notes blocks (divs) — shares the
+            // same left/right edges when pasted into Outlook.
+            const outer = document.createElement('table');
+            outer.setAttribute('role', 'presentation');
+            outer.setAttribute('width', '560');
+            outer.setAttribute('cellpadding', '0');
+            outer.setAttribute('cellspacing', '0');
+            outer.setAttribute('style', 'border-collapse:collapse;width:560px;max-width:100%;');
+            const otr = document.createElement('tr');
+            const otd = document.createElement('td');
+            otd.setAttribute('style', 'padding:0;');
+            while (el.firstChild) otd.appendChild(el.firstChild);
+            otr.appendChild(otd);
+            outer.appendChild(otr);
+            el.appendChild(outer);
+        }
+
+        // Legacy fallback for browsers without the async Clipboard API: transform in
+        // place, select, execCommand copy, then restore the on-screen quote.
+        function legacyCopySelection(el) {
+            const original = el.innerHTML;
+            try { makeOutlookSafeInPlace(el); } catch (e) { el.innerHTML = original; }
             const range = document.createRange();
             range.selectNodeContents(el);
             const sel = window.getSelection();
             sel.removeAllRanges();
             sel.addRange(range);
-
             let copied = false;
-            try {
-                copied = document.execCommand('copy');
-            } catch (e) {
-                copied = false;
-            }
+            try { copied = document.execCommand('copy'); } catch (e) { copied = false; }
             sel.removeAllRanges();
+            el.innerHTML = original;
+            if (copied) { showCopyFeedback(); }
+            else { alert('Could not copy to clipboard. Please try again.'); }
+        }
 
-            if (copied) {
-                showCopyFeedback();
-                return;
+        function copyQuote() {
+            logQuoteToSharedLog(); // Phase 1: Shared Quote Log integration
+            const el = document.getElementById('quoteContent');
+            const original = el.innerHTML;
+
+            // Build Outlook-safe HTML from a transformed copy, then restore the display.
+            let outlookHTML = original;
+            try {
+                makeOutlookSafeInPlace(el);
+                outlookHTML = el.innerHTML;
+            } catch (e) {
+                outlookHTML = original;
             }
+            el.innerHTML = original;
+            const plain = el.innerText;
 
-            // Fallback: write both rich (HTML) and plain text via the async Clipboard API
+            // PRIMARY: write our exact Outlook-safe HTML via the async Clipboard API.
+            // It copies the bytes verbatim — keeping the <font> colors and bgcolor cells
+            // that Outlook needs. execCommand('copy') re-serializes and drops <font>,
+            // which is why text on the colored bars came through black before.
             if (navigator.clipboard && window.ClipboardItem) {
                 try {
                     const item = new ClipboardItem({
-                        'text/html': new Blob([el.innerHTML], { type: 'text/html' }),
-                        'text/plain': new Blob([el.innerText], { type: 'text/plain' })
+                        'text/html': new Blob([outlookHTML], { type: 'text/html' }),
+                        'text/plain': new Blob([plain], { type: 'text/plain' })
                     });
                     navigator.clipboard.write([item]).then(showCopyFeedback).catch(() => {
-                        navigator.clipboard.writeText(el.innerText).then(showCopyFeedback).catch(() => {
-                            alert('Could not copy to clipboard. Please try again.');
-                        });
+                        legacyCopySelection(el);
                     });
+                    return;
                 } catch (e) {
-                    navigator.clipboard.writeText(el.innerText).then(showCopyFeedback).catch(() => {
-                        alert('Could not copy to clipboard. Please try again.');
-                    });
+                    // fall through to the legacy selection copy
                 }
-            } else {
-                alert('Could not copy to clipboard. Please try again.');
             }
+            legacyCopySelection(el);
         }
 
         // Show/hide storage days based on checkbox
@@ -4428,10 +5157,13 @@
         });
 
         // Load rates from Rate Manager on page load
-        loadRatesFromManager();
-        updateChassisFromLocation();
-        setupToLocationAutocomplete();
-        updateFormForMode(); // Initialize form for current mode
+        async function initPage() {
+            await loadRatesFromManager();
+            updateChassisFromLocation();
+            setupToLocationAutocomplete();
+            updateFormForMode();
+        }
+        initPage();
     </script>
 </body>
 </html>
